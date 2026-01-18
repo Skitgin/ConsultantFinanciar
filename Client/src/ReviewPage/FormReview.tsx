@@ -1,13 +1,15 @@
 import { Box, Button, Divider, Grid, Rating, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { addNewReview } from "../apiRequestFunctions/apiRequests.ts";
+import React, { useEffect, useState } from "react";
+import { addNewReview, fetchConsultantList } from "../apiRequestFunctions/apiRequests.ts";
 import type { ReviewInput } from "../app/models/ReviewInput.ts";
 import { ConsultantRoaster } from "../ConsultantRoaster.tsx";
+import type { Consultant } from "../app/models/Consultant.ts";
 type AddReviewProps = {
   onReviewAdded?: () => void;
 }
 
 export default function AddProduct({ onReviewAdded }: AddReviewProps) {
+   const [consultants, setConsultants] = useState<Consultant[]>([]);
 
   const profanityList = ["Pula", "Pulă", "Cur", "Fuck", "Muie", "Cacat", "Căcat", "Fut", "Pizda", "Pizdă", "Ma-ta", "Mă-ta", "Mă-ti", "Ma-ti", "Dick", "Shit", "Fagot", "cac", "pis", "piș", "pussy", "asshole",
     "cunt", "faggot", "nigger", "bitch", "slut", "whore", "dumbass", "piss", "crap", "hell", "futu-ti", "futu-ți", "idiot", "idioți", "cretin", "cretini", "prostituata", "prostituată", "muist", "mue", "muista", "muistă", "dracu", "naiba",
@@ -25,6 +27,11 @@ export default function AddProduct({ onReviewAdded }: AddReviewProps) {
     consultant: '',
     scor: 0,
   });
+   useEffect(() => {
+       fetchConsultantList().then(data => {
+         setConsultants(data);
+       });
+     }, []);
 
   const filterForBadWords = (word: string) => {
 
@@ -111,7 +118,7 @@ export default function AddProduct({ onReviewAdded }: AddReviewProps) {
           textAlign: 'center',
         }}>  <Box sx={{ bgcolor: "#494D5F", width: '100%', height: '100%', p: 4, borderRadius: 3, boxShadow: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', userSelect: "none" }}>
             <Typography variant='h5' align="center" sx={{ mb: 1, mt: 0, color: "#ffff", userSelect: "none" }}>Alege Consultantul Tau</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect: "none" }}><ConsultantRoaster setName={setForm} /></Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect: "none" }}><ConsultantRoaster  setName={setForm} consultants={consultants} /></Box>
 
           </Box>
 

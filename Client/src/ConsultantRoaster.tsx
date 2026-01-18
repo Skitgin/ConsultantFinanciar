@@ -2,28 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography, IconButton, Stack, CardMedia } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import type { ReviewInput } from './app/models/ReviewInput';
+import type { Consultant } from './app/models/Consultant';
 
 // 1. Define your Data Type
-interface Consultant {
-  id: number;
-  imageUrl: string;
-  name: string;
-  specialty: string;
-}
 interface SetNameProps {
   setName: React.Dispatch<React.SetStateAction<ReviewInput>>;
-
+  consultants: Consultant[]
 }
 
 
 
-const consultants: Consultant[] = [
-  { id: 1, name: "Pantea Catalin", specialty: "Consultant Financiar", imageUrl: "Cata.webp" },
-  { id: 2, name: "Belei Radu Vladut ", specialty: "Consultant Financiar", imageUrl: "Vladut.webp" },
-  { id: 3, name: "Cosmina Diana", specialty: "Consultant Financiar", imageUrl: "/Cosmina.jpg" },
-];
 
-export const ConsultantRoaster = ({ setName }: SetNameProps) => {
+
+
+
+
+
+export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React.ReactNode => {
   // 2. State to track the first visible card
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 1;
@@ -32,16 +27,17 @@ export const ConsultantRoaster = ({ setName }: SetNameProps) => {
   const handleName = (number: number) => {
     setName((prev) => ({
       ...prev,
-      consultatnt: consultants[number].name,
+      consultant: consultants[number].nume,
     }));
   }
   useEffect(() => {
+    if (consultants.length > 0 && consultants[startIndex])
     setName((prev) => ({
       ...prev,
-      consultant: consultants[startIndex].name,
+      consultant: consultants[startIndex].nume,
     }));
 
-  }, [setName, startIndex]);
+  }, [setName, startIndex, consultants]);
 
   const handleNext = () => {
 
@@ -61,47 +57,51 @@ export const ConsultantRoaster = ({ setName }: SetNameProps) => {
   };
 
   return (
-    <Stack direction="row" alignItems="center" spacing={2} sx={{ width: '100%', justifyContent: 'center', p: 2 }}>
+    <>
+      <Stack direction="row" alignItems="center" spacing={2} sx={{ width: '100%', justifyContent: 'center', p: 2 }}>
 
 
-      <IconButton
+        <IconButton
 
-        onClick={handlePrev} disabled={startIndex === 0}>
-        <ArrowBackIosNew />
-      </IconButton>
+          onClick={handlePrev} disabled={startIndex === 0}>
+          <ArrowBackIosNew />
+        </IconButton>
 
-      {/* 3. The Display Area */}
-      <Box sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', alignContent: 'center', }}>
-        {consultants.slice(startIndex, startIndex + visibleCount).map((person) => (
-          <Card key={person.id} sx={{ width: 250, bgcolor: "#494D5F", boxShadow: 3, userSelect: "none" }}>
-            <CardMedia
-              sx={{ borderRadius: 50 }}
-              component="img"
-              height="250"
-              image={person.imageUrl}
-              alt={`Profile picture of ${person.name}`}
-            />
-            <CardContent sx={{ bgcolor: "#494D5F" }}>
-              <Typography variant="h6" color="#ffff">{person.name}</Typography>
-              <Typography variant="body2" color="#ffff">
-                {person.specialty}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+        {/* 3. The Display Area */}
+        <Box sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', alignContent: 'center', }}>
+          {consultants.slice(startIndex, startIndex + visibleCount).map((person) =>{
+            
+            const DefaultImage = person.imageUrl.length<1;
+            return(
+            <Card key={person.id} sx={{ width: 250, bgcolor: "#494D5F", boxShadow: 3, userSelect: "none" }}>
+              <CardMedia
+                sx={{ borderRadius: 50 }}
+                component="img"
+                height="250"
+                image={DefaultImage ? '/default.png' :person.imageUrl}
+                alt={`Profile picture of ${person.nume}`}
+              />
+              <CardContent sx={{ bgcolor: "#494D5F" }}>
+                <Typography variant="h6" color="#ffff">{person.nume}</Typography>
+                <Typography variant="body2" color="#ffff">
+                  Consultant Financiar
+                </Typography>
+              </CardContent>
+            </Card>
+          )})}
+        </Box>
 
-      {/* Right Button */}
-      <IconButton
+        {/* Right Button */}
+        <IconButton
 
-        onClick={handleNext}
+          onClick={handleNext}
 
 
-        disabled={startIndex + visibleCount >= consultants.length}
-      >
-        <ArrowForwardIos />
-      </IconButton>
+          disabled={startIndex + visibleCount >= consultants.length}
+        >
+          <ArrowForwardIos />
+        </IconButton>
 
-    </Stack>
+      </Stack></>
   );
 };
