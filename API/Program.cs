@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ReviewContext>(opt =>
 {
-    opt.UseSqlServer("Data Source=DESKTOP-L7IVF5P;Initial Catalog=ReviewDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;");
+    opt.UseSqlServer("Server=tcp:skitgin-projects.database.windows.net,1433;Initial Catalog=consultantfinanciar-db;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication='Active Directory Default';");
 });
 
 

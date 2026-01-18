@@ -1,7 +1,7 @@
 import type { Consultant } from "../app/models/Consultant";
 import type { Review } from "../app/models/Review"
 import type { ReviewInput } from "../app/models/ReviewInput"
-const API_URL = "http://localhost:5130";
+const API_URL = "consultantifinanciari.azurewebsites.net";
 async function apiRequest<T>(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE" = "GET",

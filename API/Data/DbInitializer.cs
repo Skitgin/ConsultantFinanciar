@@ -25,8 +25,8 @@ public class DbInitializer
             new Consultant
             {
                 //Id = 1,
-                Nume = "Pantea",
-                Prenume = "Catalin",
+                Nume = "Radulescu",
+                Prenume = "Radu",
                 ImageUrl="",
                 Descriere = "",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
@@ -35,8 +35,8 @@ public class DbInitializer
              new Consultant
             {
                 //Id = 2,
-                Nume = "Belei",
-                Prenume = "Radu Vladuț",
+                Nume = "Enescu",
+                Prenume = "Ene",
                 ImageUrl="",
                 Descriere = "",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header"
@@ -45,8 +45,8 @@ public class DbInitializer
               new Consultant
             {
                 //Id = 2,
-                Nume = "Cosmina",
-                Prenume = "Diana",
+                Nume = "Viorescu",
+                Prenume = "Viorica",
                 ImageUrl="",
                 Descriere = "",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header"
@@ -54,6 +54,46 @@ public class DbInitializer
             }
         };
         context.Consultants.AddRange(consultants);
+        context.SaveChanges();
+    }
+     private static void SeedDataReviews(ReviewContext context)
+    {
+        context.Database.Migrate();
+        if (context.Reviews.Any()) return;
+        var reviews= new List<Review>
+        {
+
+            new Review
+            {
+                //Id = 1,
+                Nume = "Xulan",
+                Prenume = "Xulescu",
+                Consultant="Radu Radulescu ",
+                Descriere = "Am avut o experiență foarte bună cu consilierul economic. Mi-a explicat clar toate opțiunile și m-a ajutat să iau decizii financiare mai sigure. Profesionalism și răbdare pe tot parcursul colaborării.",
+                Scor =5
+            },
+              new Review
+            {
+                //Id = 1,
+                Nume = "Marian",
+                Prenume = "Marinescu",
+                Consultant="Ene Enescu",
+                Descriere = "Consilierul economic a fost extrem de bine pregătit și atent la nevoile mele. Am primit soluții personalizate și ușor de aplicat. Recomand cu încredere pentru oricine vrea mai mult control asupra finanțelor",
+                Scor =5
+
+            },
+           new Review
+            {
+                //Id = 1,
+                Nume = "Andreea",
+                Prenume = "Andreescu",
+                Consultant="Viorica Viorescu",
+                Descriere = "O colaborare excelentă! Am apreciat modul structurat de lucru și explicațiile pe înțelesul meu. M-am simțit susținută și informată la fiecare pas.",
+                Scor=5
+
+            },
+        };
+        context.Reviews.AddRange(reviews);
         context.SaveChanges();
     }
 }
