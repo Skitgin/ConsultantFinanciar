@@ -13,6 +13,7 @@ public class DbInitializer
         var context = scope.ServiceProvider.GetService<ReviewContext>()
         ?? throw new InvalidOperationException("Failed to retrive context");
         SeedData(context);
+        SeedDataReviews(context);
     }
 
     private static void SeedData(ReviewContext context)
