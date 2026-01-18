@@ -32,10 +32,10 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
   }
   useEffect(() => {
     if (consultants.length > 0 && consultants[startIndex])
-    setName((prev) => ({
-      ...prev,
-      consultant: consultants[startIndex].nume,
-    }));
+      setName((prev) => ({
+        ...prev,
+        consultant: consultants[startIndex].nume,
+      }));
 
   }, [setName, startIndex, consultants]);
 
@@ -69,26 +69,27 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
 
         {/* 3. The Display Area */}
         <Box sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', alignContent: 'center', }}>
-          {consultants.slice(startIndex, startIndex + visibleCount).map((person) =>{
-            
-            const DefaultImage = person.imageUrl.length<1;
-            return(
-            <Card key={person.id} sx={{ width: 250, bgcolor: "#494D5F", boxShadow: 3, userSelect: "none" }}>
-              <CardMedia
-                sx={{ borderRadius: 50 }}
-                component="img"
-                height="250"
-                image={DefaultImage ? '/default.png' :person.imageUrl}
-                alt={`Profile picture of ${person.nume}`}
-              />
-              <CardContent sx={{ bgcolor: "#494D5F" }}>
-                <Typography variant="h6" color="#ffff">{person.nume}</Typography>
-                <Typography variant="body2" color="#ffff">
-                  Consultant Financiar
-                </Typography>
-              </CardContent>
-            </Card>
-          )})}
+          {consultants.slice(startIndex, startIndex + visibleCount).map((person) => {
+
+            const DefaultImage = person.imageUrl.length < 1;
+            return (
+              <Card key={person.id} sx={{ width: 250, bgcolor: "#494D5F", boxShadow: 3, userSelect: "none" }}>
+                <CardMedia
+                  sx={{ borderRadius: 50 }}
+                  component="img"
+                  height="250"
+                  image={DefaultImage ? '/default.png' : person.imageUrl}
+                  alt={`Profile picture of ${person.nume}`}
+                />
+                <CardContent sx={{ bgcolor: "#494D5F" }}>
+                  <Typography variant="h6" color="#ffff">{person.nume + " " + person.prenume}</Typography>
+                  <Typography variant="body2" color="#ffff">
+                    Consultant Financiar
+                  </Typography>
+                </CardContent>
+              </Card>
+            )
+          })}
         </Box>
 
         {/* Right Button */}
