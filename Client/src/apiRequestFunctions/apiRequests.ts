@@ -1,7 +1,7 @@
 import type { Consultant } from "../app/models/Consultant";
 import type { Review } from "../app/models/Review"
 import type { ReviewInput } from "../app/models/ReviewInput"
-const API_URL = "consultantifinanciari.azurewebsites.net";
+const API_URL = "https://consultantifinanciari.azurewebsites.net";
 async function apiRequest<T>(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
@@ -26,9 +26,9 @@ export async function addNewReview(form: ReviewInput): Promise<Review> {
     return await apiRequest<Review>(`${API_URL}/api/Review`, "POST", form);
 }
 export async function fetchReviewList(): Promise<Review[]> {
-     return await apiRequest<Review[]>(`${API_URL}/api/Review`, 'GET');
+    return await apiRequest<Review[]>(`${API_URL}/api/Review`, 'GET');
 }
 
 export async function fetchConsultantList(): Promise<Consultant[]> {
-     return await apiRequest<Consultant[]>(`${API_URL}/api/Consultants`, 'GET');
+    return await apiRequest<Consultant[]>(`${API_URL}/api/Consultants`, 'GET');
 }
