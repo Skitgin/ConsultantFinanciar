@@ -11,7 +11,11 @@ builder.Services.AddOpenApi();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ReviewContext>(opt =>
 {
-    opt.UseSqlServer(connectionString);
+    opt.UseSqlServer(connectionString,sqlOptions => 
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5, 
+            maxRetryDelay: TimeSpan.FromSeconds(10), 
+            errorNumbersToAdd: null));
 });
 
 
