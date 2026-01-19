@@ -3,15 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReact", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173") // Use your React port
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
 
 
 builder.Services.AddControllers();
@@ -31,7 +22,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-app.UseCors("AllowReact");
 
 app.UseHttpsRedirection();
 
