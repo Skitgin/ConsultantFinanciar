@@ -26,19 +26,19 @@ public class DbInitializer
             new Consultant
             {
                 //Id = 1,
-                Nume = "Radulescu",
-                Prenume = "Radu",
-                ImageUrl="",
-                Descriere = "",
+                Nume = "Cosmina",
+                Prenume = "Diana",
+                ImageUrl="/Cosmina.webp",
+                Descriere = "Descriere Personala: /n Am descoperit lumea finanțelor nu din manuale, ci din realitatea vieții de zi cu zi — atunci când am realizat cât de greu este să trăiești fără o siguranță financiară reală.Am văzut oameni muncitori, inteligenți, care își pierd liniștea nu pentru că nu câștigă suficient, ci pentru că nu știu cum să gestioneze eficient ceea ce au./n Așa a început drumul meu./nDupă ce am absolvit studiile economice și m-am specializat în domeniul financiar, am obținut și acreditarea oficială ISF (Institutul de Studii Financiare), iar de atunci, mi-am propus o misiune clară: să-i ajut pe români să scape de povara unei situații financiare instabile și să își construiască, pas cu pas, un plan care le aduce siguranță, echilibru și libertate./n Cred că educația financiară nu este un lux, ci o nevoie de bază, iar scopul meu este să fac acest proces accesibil, realist și mai ales, potrivit, pentru ca oricine să poată trăi o viață fără stresul banilor și cu mai multă încredere în propriul viitor.",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
 
             },
              new Consultant
             {
                 //Id = 2,
-                Nume = "Enescu",
-                Prenume = "Ene",
-                ImageUrl="",
+                Nume = "Pantea",
+                Prenume = "Catalin",
+                ImageUrl="/Cata.webp",
                 Descriere = "",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header"
 
@@ -46,11 +46,11 @@ public class DbInitializer
               new Consultant
             {
                 //Id = 2,
-                Nume = "Viorescu",
-                Prenume = "Viorica",
+                Nume = "Belei",
+                Prenume = "Radu Vladut",
                 ImageUrl="",
                 Descriere = "",
-                Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header"
+                Link="https://calendar.google.com/calendar/u/0/r/eventedit?text=Consultan%C8%9B%C4%83+Financiar%C4%83&dates=20240405T100000Z/20240405T110000Z&details=Discut%C4%83m+despre+siguran%C8%9Ba+ta+financiar%C4%83!&location=Online&sf=true&output=xml"
 
             }
         };

@@ -1,22 +1,19 @@
-import { Box, Divider, Grid } from "@mui/material"
+import { Box, Divider, Grid, LinearProgress } from "@mui/material"
 import FormReview from "./FormReview"
 import Catalog from "./Catalog"
-import { useEffect, useState } from "react";
-import type { Review } from "../app/models/Review";
 import { fetchReviewList } from "../apiRequestFunctions/apiRequests";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 
 function ReviewPage() {
-
-  const [reviews, setReviews] = useState<Review[]>([]);
-  useEffect(() => {
-    fetchReviewList().then(reviews => setReviews(reviews));
-  }, [])
-
+  const queryClient = useQueryClient();
+  const {data:reviews = [], isLoading}=useQuery({
+    queryFn:()=>fetchReviewList(),
+    queryKey:["reviews"]
+  })
+ 
   async function refreshList() {
-    const products = await fetchReviewList();
-    setReviews(products);
-    return products;
+    queryClient.invalidateQueries({ queryKey: ["reviews"] });
   }
 
   return (
@@ -26,7 +23,8 @@ function ReviewPage() {
       </Box>
       <Divider sx={{ mt: 3 }}></Divider>
       <Box sx={{ p: 0, mt: 0, mb: 3 }} >
-        <Catalog reviews={reviews} />
+        {isLoading?(<LinearProgress />):(<Catalog reviews={reviews} />)}
+        
       </Box>
 
 
