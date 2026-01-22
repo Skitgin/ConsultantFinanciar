@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Consultant } from '../app/models/Consultant';
 import ConsultantCardMobile from '../ConsultantCardMobile';
@@ -45,41 +45,28 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
         <motion.div
           key={startIndex}
           drag="x"
-          dragDirectionLock // Ensures once a swipe starts horizontally, it stays horizontal
+          dragDirectionLock
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
           onTap={() => setIsExpanded(!isExpanded)}
-
-          initial={{ opacity: 0, x: 100, scale: 0.9 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            scale: isExpanded ? 1.08 : 1
-          }}
-          exit={{
-            opacity: 0,
-            x: -100,
-            scale: isExpanded ? 1.08 : 0.9
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           style={{
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
             zIndex: isExpanded ? 10 : 1,
-            // CHANGE: 'none' blocks page scrolling. 'pan-y' allows vertical page scroll.
-            touchAction: 'pan-y'
+            touchAction: 'pan-y' // Allows page scrolling
           }}
         >
           <Box sx={{
             width: '100%',
             maxWidth: '320px',
             px: 2,
+            // THE FIX: Makes the card "transparent" to swipes
+            pointerEvents: 'none',
             filter: isExpanded ? 'drop-shadow(0px 10px 25px rgba(0,0,0,0.3))' : 'none',
-            transition: 'filter 0.3s ease',
-            // ADD: ensures internal buttons work but drag still registers
-            pointerEvents: 'auto'
+            transition: 'filter 0.3s ease'
           }}>
+            {/* The Card Component */}
             <ConsultantCardMobile consultant={consultants[startIndex]} />
           </Box>
         </motion.div>
