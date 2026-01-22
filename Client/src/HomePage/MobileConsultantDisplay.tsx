@@ -71,16 +71,9 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
             touchAction: 'pan-y' // Vital for roaster scrolling
           }}
         >
-          <Box sx={{ 
-            width: '100%', 
-            maxWidth: '320px', 
-            px: 2,
-            // Visual feedback for expansion
-            filter: isExpanded ? 'drop-shadow(0px 10px 30px rgba(0,0,0,0.3))' : 'none',
-            transition: 'filter 0.4s ease'
-          }}>
+        
             <ConsultantCardMobile consultant={consultants[startIndex]} />
-          </Box>
+        
         </motion.div>
       </AnimatePresence>
 
