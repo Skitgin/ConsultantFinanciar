@@ -4,73 +4,76 @@ import { RoasterPartener } from '../RoasterPartener';
 import React from 'react';
 const parteneri: string[] = ["/Admiral.webp", "/axi.webp", "/BCR.webp", "/oceancredit.webp", "/provident.webp", "/viaconto.webp", "/viva.webp", "/creditagricole.webp"]
 const Consultanti = React.lazy(() => import('./ConsultantDisplay'));
-const MobileConsultanti = React.lazy(()=>import('./MobileConsultantDisplay'));
-import { useQuery } from '@tanstack/react-query'; 
+const MobileConsultanti = React.lazy(() => import('./MobileConsultantDisplay'));
+import { useQuery } from '@tanstack/react-query';
+
+
+
 export default function HomePage() {
- 
+
   const theme = useTheme();
-// Detects if the screen is smaller than 'md' (900px), covering mobile and tablet
+  // Detects if the screen is smaller than 'md' (900px), covering mobile and tablet
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
- const {data :consultants = [],isLoading} = useQuery({
-  queryFn: () => fetchConsultantList(),
-  queryKey:["consultants"],
+  const { data: consultants = [], isLoading } = useQuery({
+    queryFn: () => fetchConsultantList(),
+    queryKey: ["consultants"],
 
- });
+  });
 
-return (
-  <Grid 
-    container 
-    maxWidth='xl' 
-    sx={{ 
-      mx: 'auto', 
-      justifyContent: "center", 
-      alignContent: "center", 
-      bgcolor: "#e5eaf5", 
-      userSelect: "none", 
-      // 1. Remove hard 'column' for all screens, allow it to be fluid
-      display: 'flex',
-      flexDirection: 'column',
-      // 2. Ensure the grid takes full width available
-      width: '100%',
-      overflowX: 'hidden' 
-    }}
-  >
-    {/* Display Area for Consultants */}
-    <Box sx={{ 
-      width: '100%', 
-      // 3. Changed fixed 720px to a responsive height
-      minHeight: { xs: '500px', md: '720px' }, 
-      display: 'flex', 
-      alignItems: 'center' 
-    }}>
-      {isLoading ? (
-        <Box sx={{ width: '100%', height: '500px' }}><LinearProgress /></Box>
-      ) : (
-        isSmallScreen?(<MobileConsultanti consultants={consultants}/> ): (<Consultanti consultants={consultants}/>)
-        
-      )}
-    </Box>
+  return (
+    <Grid
+      container
+      maxWidth='xl'
+      sx={{
+        mx: 'auto',
+        justifyContent: "center",
+        alignContent: "center",
+        bgcolor: "#e5eaf5",
+        userSelect: "none",
+        // 1. Remove hard 'column' for all screens, allow it to be fluid
+        display: 'flex',
+        flexDirection: 'column',
+        // 2. Ensure the grid takes full width available
+        width: '100%',
+        overflowX: 'hidden'
+      }}
+    >
+      {/* Display Area for Consultants */}
+      <Box sx={{
+        width: '100%',
+        // 3. Changed fixed 720px to a responsive height
+        minHeight: { xs: '500px', md: '720px' },
+        display: 'flex',
+        alignItems: 'center'
+      }}>
+        {isLoading ? (
+          <Box sx={{ width: '100%', height: '500px' }}><LinearProgress /></Box>
+        ) : (
+          isSmallScreen ? (<MobileConsultanti consultants={consultants} />) : (<Consultanti consultants={consultants} />)
 
-    {/* Partners Header */}
-    <Box sx={{ 
-      display: "flex", 
-      justifyContent: "center", 
-      alignContent: "center",
-      my: 2 // Added vertical margin for spacing
-    }}> 
-      <Typography variant="h6">Parteneri</Typography>
-    </Box>
+        )}
+      </Box>
 
-    {/* Partners Slider Area */}
-    <Box sx={{ 
-      width: '100%',
-      minHeight: '100px',
-      pb: 4 // Padding at the bottom for mobile thumb clearance
-    }}>
-      <Divider sx={{ mb: 2 }} />
-      <RoasterPartener parteneri={parteneri} />
-    </Box>
-  </Grid>
-)
+      {/* Partners Header */}
+      <Box sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center",
+        my: 2 // Added vertical margin for spacing
+      }}>
+        <Typography variant="h6">Parteneri</Typography>
+      </Box>
+
+      {/* Partners Slider Area */}
+      <Box sx={{
+        width: '100%',
+        minHeight: '100px',
+        pb: 4 // Padding at the bottom for mobile thumb clearance
+      }}>
+        <Divider sx={{ mb: 2 }} />
+        <RoasterPartener parteneri={parteneri} />
+      </Box>
+    </Grid>
+  )
 }
