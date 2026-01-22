@@ -26,7 +26,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
 
   // 2. Auto-play logic (Stays stopped if isExpanded is true)
   useEffect(() => {
-    if (isExpanded) return; 
+    if (isExpanded) return;
 
     const interval = setInterval(handleNext, 3000);
     return () => clearInterval(interval);
@@ -40,49 +40,45 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
   };
 
   return (
-    <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', py: 6 }}>
+    <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', py: 1 }}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.div
           key={startIndex}
           drag="x"
+          dragDirectionLock // Ensures once a swipe starts horizontally, it stays horizontal
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
-          // Using whileTap for a more responsive "press" feel
           onTap={() => setIsExpanded(!isExpanded)}
-          
+
           initial={{ opacity: 0, x: 100, scale: 0.9 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0, 
-            // The card stays big if we are in expanded mode
-            scale: isExpanded ? 1.08 : 1 
+          animate={{
+            opacity: 1,
+            x: 0,
+            scale: isExpanded ? 1.08 : 1
           }}
-          exit={{ 
-            opacity: 0, 
-            x: -100, 
-            // The exiting card stays big if we were expanded, creating a smooth transition
-            scale: isExpanded ? 1.08 : 0.9 
+          exit={{
+            opacity: 0,
+            x: -100,
+            scale: isExpanded ? 1.08 : 0.9
           }}
-          
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 30 
-          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           style={{
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
             zIndex: isExpanded ? 10 : 1,
-            touchAction: 'none'
+            // CHANGE: 'none' blocks page scrolling. 'pan-y' allows vertical page scroll.
+            touchAction: 'pan-y'
           }}
         >
-          <Box sx={{ 
-            width: '100%', 
-            maxWidth: '320px', 
+          <Box sx={{
+            width: '100%',
+            maxWidth: '320px',
             px: 2,
             filter: isExpanded ? 'drop-shadow(0px 10px 25px rgba(0,0,0,0.3))' : 'none',
-            transition: 'filter 0.3s ease'
+            transition: 'filter 0.3s ease',
+            // ADD: ensures internal buttons work but drag still registers
+            pointerEvents: 'auto'
           }}>
             <ConsultantCardMobile consultant={consultants[startIndex]} />
           </Box>
@@ -90,14 +86,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
       </AnimatePresence>
 
       {/* Status Bar: Optional hint that it's paused */}
-      {isExpanded && (
-        <Typography 
-          variant="caption" 
-          sx={{ display: 'block', textAlign: 'center', mt: 1, color: '#8458B3', fontWeight: 'bold' }}
-        >
-          Mod Lectură (Pauză)
-        </Typography>
-      )}
+      {isExpanded}
 
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 1.5 }}>
         {consultants.map((_, i) => (
