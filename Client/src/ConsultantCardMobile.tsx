@@ -70,6 +70,7 @@ return (
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgba(255,255,255,0.2)',
             borderRadius: '10px',
+            touchAction: 'pan-y',
           },
         }}
       >

@@ -13,34 +13,25 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const totalItems = consultants.length;
 
-  // 1. Navigation logic that preserves the "Expanded" state
-  const handleNext = () => {
-    setStartIndex((prev) => (prev + 1) % totalItems);
-    // We NO LONGER set isExpanded to false here
-  };
+  const handleNext = () => setStartIndex((prev) => (prev + 1) % totalItems);
+  const handlePrev = () => setStartIndex((prev) => (prev - 1 + totalItems) % totalItems);
 
-  const handlePrev = () => {
-    setStartIndex((prev) => (prev - 1 + totalItems) % totalItems);
-    // We NO LONGER set isExpanded to false here
-  };
-
-  // 2. Auto-play logic (Stays stopped if isExpanded is true)
+  // Auto-play: Only runs if NOT expanded
   useEffect(() => {
     if (isExpanded) return;
-
     const interval = setInterval(handleNext, 3000);
     return () => clearInterval(interval);
   }, [startIndex, isExpanded]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleDragEnd = (event: any, info: { offset: { x: number; }; }) => {
+  const handleDragEnd = (event: any, info: { offset: { x: number } }) => {
     const swipeThreshold = 50;
     if (info.offset.x < -swipeThreshold) handleNext();
     else if (info.offset.x > swipeThreshold) handlePrev();
   };
 
   return (
-    <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', py: 1 }}>
+    <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', py:isExpanded?1:0 }}>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.div
           key={startIndex}
@@ -48,34 +39,53 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
           dragDirectionLock
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
+          
+          // FIX: Proper toggle logic for Tap
           onTap={() => setIsExpanded(!isExpanded)}
+          
+          // ANIMATION LOGIC
+          initial={{ opacity: 0, x: 100, scale: 0.9 }} 
+          animate={{ 
+            opacity: 1, 
+            x: 0, 
+            // Expand to 1 (full size) if expanded, otherwise slightly smaller (0.9)
+            scale: isExpanded ? 1 : 0.9,
+            // Apply contrast only when expanded
+            filter: isExpanded ? "contrast(1.2)" : "contrast(1)"
+          }}
+          exit={{ 
+            opacity: 0, 
+            x: -100, 
+            scale: isExpanded ? 1 : 0.8 
+          }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 30 
+          }}
           style={{
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
             zIndex: isExpanded ? 10 : 1,
-            touchAction: 'pan-y' // Allows page scrolling
+            touchAction: 'pan-y' // Vital for roaster scrolling
           }}
         >
-          <Box sx={{
-            width: '100%',
-            maxWidth: '320px',
+          <Box sx={{ 
+            width: '100%', 
+            maxWidth: '320px', 
             px: 2,
-            // THE FIX: Makes the card "transparent" to swipes
-            pointerEvents: 'none',
-            filter: isExpanded ? 'drop-shadow(0px 10px 25px rgba(0,0,0,0.3))' : 'none',
-            transition: 'filter 0.3s ease'
+            // Visual feedback for expansion
+            filter: isExpanded ? 'drop-shadow(0px 10px 30px rgba(0,0,0,0.3))' : 'none',
+            transition: 'filter 0.4s ease'
           }}>
-            {/* The Card Component */}
             <ConsultantCardMobile consultant={consultants[startIndex]} />
           </Box>
         </motion.div>
       </AnimatePresence>
 
-      {/* Status Bar: Optional hint that it's paused */}
-      {isExpanded}
-
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 1.5 }}>
+      {/* Pagination dots */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, gap: 1.5 }}>
         {consultants.map((_, i) => (
           <Box
             key={i}
