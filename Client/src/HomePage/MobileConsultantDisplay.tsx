@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Box, Stack, IconButton } from '@mui/material';
-import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { useEffect, useState } from 'react';
+import { Box, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Consultant } from '../app/models/Consultant';
 import ConsultantCardMobile from '../ConsultantCardMobile';
@@ -10,133 +9,112 @@ type Props = {
 }
 
 export const MobileConsultantDisplay = ({ consultants }: Props) => {
-  const [isPaused, setIsPaused] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
-
-  // Hardcoded for mobile/tablet optimization
-  const visibleCount = 1;
+  const [isExpanded, setIsExpanded] = useState(false);
   const totalItems = consultants.length;
 
-  const visibleReviews = useMemo(() => {
-    const endIndex = startIndex + visibleCount;
-    if (endIndex <= totalItems) {
-      return consultants.slice(startIndex, endIndex);
-    }
-    return [
-      ...consultants.slice(startIndex),
-      ...consultants.slice(0, endIndex % totalItems),
-    ];
-  }, [startIndex, consultants, totalItems]);
+  // 1. Navigation logic that preserves the "Expanded" state
   const handleNext = () => {
     setStartIndex((prev) => (prev + 1) % totalItems);
+    // We NO LONGER set isExpanded to false here
   };
 
   const handlePrev = () => {
     setStartIndex((prev) => (prev - 1 + totalItems) % totalItems);
+    // We NO LONGER set isExpanded to false here
   };
 
+  // 2. Auto-play logic (Stays stopped if isExpanded is true)
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      handleNext();
-    }, 3000); // Slightly slower for mobile readability
+    if (isExpanded) return; 
+
+    const interval = setInterval(handleNext, 3000);
     return () => clearInterval(interval);
-  }, [totalItems, isPaused]);
+  }, [startIndex, isExpanded]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleDragEnd = (event: any, info: { offset: { x: number; }; }) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold) handleNext();
+    else if (info.offset.x > swipeThreshold) handlePrev();
+  };
 
+  return (
+    <Box sx={{ width: '100%', position: 'relative', overflow: 'hidden', py: 6 }}>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.div
+          key={startIndex}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={handleDragEnd}
+          // Using whileTap for a more responsive "press" feel
+          onTap={() => setIsExpanded(!isExpanded)}
+          
+          initial={{ opacity: 0, x: 100, scale: 0.9 }}
+          animate={{ 
+            opacity: 1, 
+            x: 0, 
+            // The card stays big if we are in expanded mode
+            scale: isExpanded ? 1.08 : 1 
+          }}
+          exit={{ 
+            opacity: 0, 
+            x: -100, 
+            // The exiting card stays big if we were expanded, creating a smooth transition
+            scale: isExpanded ? 1.08 : 0.9 
+          }}
+          
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 30 
+          }}
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            zIndex: isExpanded ? 10 : 1,
+            touchAction: 'none'
+          }}
+        >
+          <Box sx={{ 
+            width: '100%', 
+            maxWidth: '320px', 
+            px: 2,
+            filter: isExpanded ? 'drop-shadow(0px 10px 25px rgba(0,0,0,0.3))' : 'none',
+            transition: 'filter 0.3s ease'
+          }}>
+            <ConsultantCardMobile consultant={consultants[startIndex]} />
+          </Box>
+        </motion.div>
+      </AnimatePresence>
 
- return (
-  <Stack
-    direction="row"
-    alignItems="center"
-    justifyContent="center"
-    sx={{ 
-      width: '100%', 
-      position: 'relative', 
-      py: 1, // Removed padding to let cards use full space
-      minHeight: '500px' // Ensure the stack itself has height
-    }}
-  >
-    {/* Left Navigation Arrow */}
-    <IconButton
-      onClick={handlePrev}
-      sx={{
-        position: 'absolute',
-        left: 0, // Moved closer to the edge
-        zIndex: 20,
-        bgcolor: 'rgba(0,0,0,0.05)', // Subtle dark tint instead of white
-        '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
-      }}
-    >
-      <ArrowBackIosNew fontSize="small" />
-    </IconButton>
+      {/* Status Bar: Optional hint that it's paused */}
+      {isExpanded && (
+        <Typography 
+          variant="caption" 
+          sx={{ display: 'block', textAlign: 'center', mt: 1, color: '#8458B3', fontWeight: 'bold' }}
+        >
+          Mod Lectură (Pauză)
+        </Typography>
+      )}
 
-    {/* Display Area - Background removed */}
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: "relative",
-        width: '100%',
-        height: '100%',
-        // overflow: "hidden" is removed here so cards can slide 
-        // in/out without getting "cut" at the container edge
-      }}
-    >
-      <Box sx={{ 
-        position: 'relative', 
-        width: '100%', 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center' 
-      }}>
-        <AnimatePresence mode="popLayout" initial={false}>
-          {visibleReviews.map((consultant: Consultant) => (
-            <motion.div
-              key={consultant.id}
-              onTap={() => setIsPaused(true)}
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -80 }}
-              transition={{ type: "spring", stiffness: 260, damping: 25 }}
-              style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '0 10px', // Space for the card not to touch the screen edge
-              }}
-            >
-              <Box sx={{
-                width: '100%',
-                maxWidth: '320px', // Match the card's native width
-                display: 'flex',
-                justifyContent: 'center'
-              }}>
-                <ConsultantCardMobile consultant={consultant} />
-              </Box>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 1.5 }}>
+        {consultants.map((_, i) => (
+          <Box
+            key={i}
+            sx={{
+              width: i === startIndex ? 12 : 8,
+              height: 8,
+              borderRadius: 4,
+              bgcolor: i === startIndex ? '#8458B3' : 'rgba(0,0,0,0.2)',
+              transition: 'all 0.3s ease'
+            }}
+          />
+        ))}
       </Box>
     </Box>
-
-    {/* Right Navigation Arrow */}
-    <IconButton
-      onClick={handleNext}
-      sx={{
-        position: 'absolute',
-        right: 0, // Moved closer to the edge
-        zIndex: 20,
-        bgcolor: 'rgba(0,0,0,0.05)',
-        '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
-      }}
-    >
-      <ArrowForwardIos fontSize="small" />
-    </IconButton>
-  </Stack>
-);
+  );
 };
 
 export default MobileConsultantDisplay;
