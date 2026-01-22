@@ -6,12 +6,21 @@ type Props = {
 }
 
 export default function ReviewList({ reviews }: Props) {
-  return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: "center", paddingLeft: 0, paddingRight: 0, alignContent: 'center' }}>
-
-      {reviews.map((review: { id: number; nume: string; prenume: string; descriere: string; consultant: string; scor: number; }) => (<CardReview key={review.id} review={review} />))}
-
+ return (
+    <Box 
+      sx={{ 
+        display: 'flex', 
+        flexDirection: 'row', 
+        gap: 3, 
+        flexWrap:"wrap",
+        justifyContent: "center", 
+        width: '100%',
+        px: { xs: 2, md: 1 },
+      }}
+    >
+      {reviews.map((review) => (
+        <CardReview key={review.id} review={review} />
+      ))}
     </Box>
-
-  )
+  );
 }

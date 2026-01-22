@@ -17,14 +17,14 @@ type Props = {
 export default function ConsultantCard({ consultant }: Props) {
 
   return (
-    <Card sx={{ bgcolor: '#494D5F', maxWidth: "auto", width: 500, height: 670, borderRadius: 6, mt: 0, boxShadow: 4, justifyContent: "space-between", alignContent: "start", flexDirection: "column" }}>
+    <Card sx={{ bgcolor: '#494D5F', maxWidth: "auto", width: 500, height: 670, borderRadius: 6, mt:0, boxShadow: 4, justifyContent: "space-between", alignContent: "start", flexDirection: "column" }}>
 
-      <CardHeader sx={{ p: 3, display: 'flex', justifyContent: 'center', alignContent: "start", height: 200 }}
+      <CardHeader sx={{ mt:5, display: 'flex', justifyContent: 'center', alignContent: "start", height:120 }}
         avatar={
-          <><Avatar src={consultant.imageUrl} alt="Pantea Catalin" sx={{ height: 120, width: 120, ml: 3, display: 'flex', justifyContent: 'center', alignContent: 'center' }} aria-label="recipe">
+          <><Avatar src={consultant.imageUrl} alt={consultant.nume} sx={{ border: '3px solid #f8a100', height: 120, width: 120, ml: 3, display: 'flex', justifyContent: 'center', alignContent: 'center' }} aria-label="recipe">
 
           </Avatar>
-            <Box sx={{ display: "flex", flexDirection: "column", p: 4 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", px: 4,mt:4 }}>
               <Typography variant="h5" color='White' align='center' sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                 {consultant.nume + " " + consultant.prenume}
               </Typography>
@@ -38,14 +38,14 @@ export default function ConsultantCard({ consultant }: Props) {
           </>
 
         } />
-      <CardContent sx={{ height: "100%", maxHeight: 300 }}>
+      <CardContent sx={{ height: "100%", maxHeight:420}}>
         <Box sx={{ borderRadius: 3, }}>  <Typography
           variant="body1"
           sx={{
-            px: 2, color: "#ffff",
+            px: 4 ,mt:1, color: "#ffff",
             // 1. Set the visual limit (e.g., 4 lines)
-            lineHeight: 1.5, // Standard line height
-            maxHeight: '21em', // Calculation: 1.5 (lineHeight) * 4 (maxRows) = 6em
+            lineHeight: 1.2, // Standard line height
+            maxHeight: '23em', // Calculation: 1.5 (lineHeight) * 4 (maxRows) = 6em
 
             // 2. Make it scrollable
             overflowY: 'auto', overflowX: 'hidden',
@@ -73,7 +73,7 @@ export default function ConsultantCard({ consultant }: Props) {
 
 
       </CardContent>
-      <CardActions sx={{ display: "flex", justifyContent: "end", alignContent: "end", mt: 10, px: 3 }}>
+      <CardActions sx={{ display: "flex", justifyContent: "end", alignContent: "end", px: 3 }}>
           <Button  target="_blank"  rel="noopener noreferrer" href={consultant.link} size="large" variant="contained" sx={{ bgcolor: "#8458B3", color: "#ffff", p: 2, borderRadius: 5, }}>Programeaza o Sedinta</Button>
       </CardActions>
     </Card>

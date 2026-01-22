@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Box, IconButton, Stack } from '@mui/material';
+import { Box, IconButton, Stack, useMediaQuery, useTheme } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import CardReview from './CardReview';
 import type { Review } from '../app/models/Review';
@@ -15,8 +15,13 @@ export const ReviewRoaster = ({ reviews }: Props) => {
 
   // 2. State to track the first visible card
   //const [isPaused, setIsPaused] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // < 600px
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 3;
+  let visibleCount = 3;
+  if (isMobile)visibleCount = 1;
+  if (isTablet)visibleCount =1;
   const totalItems = reviews.length
   const visibleReviews = useMemo(() => {
     const endIndex = startIndex + visibleCount;
@@ -27,7 +32,7 @@ export const ReviewRoaster = ({ reviews }: Props) => {
       ...reviews.slice(startIndex),
       ...reviews.slice(0, endIndex % totalItems),
     ];
-  }, [startIndex, reviews, totalItems]);
+  }, [startIndex, reviews, totalItems,visibleCount]);
 
 
 

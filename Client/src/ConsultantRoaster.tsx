@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, Typography, IconButton, Stack, CardMedia } from '@mui/material';
+import { Box, Typography, IconButton, CardMedia } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import type { ReviewInput } from './app/models/ReviewInput';
 import type { Consultant } from './app/models/Consultant';
@@ -56,53 +56,66 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
     handleName(startIndex - 1);
   };
 
-  return (
-    <>
-      <Stack direction="row" alignItems="center" spacing={2} sx={{ width: '100%', justifyContent: 'center', p: 2 }}>
+ return (
+  <Box sx={{ width: '100%', userSelect: "none" }}>
+    {/* 1. Top Section: Arrows + Image only (Centered) */}
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+      
+      {/* Left Button */}
+      <IconButton 
+        onClick={handlePrev} 
+        disabled={startIndex === 0}
+        sx={{ color: 'white', '&.Mui-disabled': { opacity: 0.3 } }}
+      >
+        <ArrowBackIosNew fontSize="small" />
+      </IconButton>
 
+      {/* Image Container */}
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', maxWidth: { xs: 200, sm: 250 } }}>
+        {consultants.slice(startIndex, startIndex + visibleCount).map((person) => {
+          const hasNoImage = person.imageUrl.length < 1;
+          return (
+            <Box key={person.id} sx={{ width: '100%' }}>
+              <CardMedia
+                component="img"
+                image={hasNoImage ? '/default.png' : person.imageUrl}
+                alt={person.nume}
+                sx={{ 
+                  borderRadius: '50%', 
+                  aspectRatio: '1/1', 
+                  width: '100%', 
+                  objectFit: 'cover',
+                  boxShadow: 3
+                }}
+              />
+            </Box>
+          );
+        })}
+      </Box>
 
-        <IconButton
+      {/* Right Button */}
+      <IconButton 
+        onClick={handleNext} 
+        disabled={startIndex + visibleCount >= consultants.length}
+        sx={{ color: 'white', '&.Mui-disabled': { opacity: 0.3 } }}
+      >
+        <ArrowForwardIos fontSize="small" />
+      </IconButton>
+    </Box>
 
-          onClick={handlePrev} disabled={startIndex === 0}>
-          <ArrowBackIosNew />
-        </IconButton>
-
-        {/* 3. The Display Area */}
-        <Box sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', alignContent: 'center', }}>
-          {consultants.slice(startIndex, startIndex + visibleCount).map((person) => {
-
-            const DefaultImage = person.imageUrl.length < 1;
-            return (
-              <Card key={person.id} sx={{ width: 250, bgcolor: "#494D5F", boxShadow: 3, userSelect: "none" }}>
-                <CardMedia
-                  sx={{ borderRadius: 50 }}
-                  component="img"
-                  height="250"
-                  image={DefaultImage ? '/default.png' : person.imageUrl}
-                  alt={`Profile picture of ${person.nume}`}
-                />
-                <CardContent sx={{ bgcolor: "#494D5F" }}>
-                  <Typography variant="h6" color="#ffff">{person.nume + " " + person.prenume}</Typography>
-                  <Typography variant="body2" color="#ffff">
-                    Consultant Financiar
-                  </Typography>
-                </CardContent>
-              </Card>
-            )
-          })}
+    {/* 2. Bottom Section: Name and Title (Always centered below) */}
+    <Box sx={{ mt: 2 ,mb:3 }}>
+      {consultants.slice(startIndex, startIndex + visibleCount).map((person) => (
+        <Box key={`text-${person.id}`}>
+          <Typography align='center' variant="h6" color="white" noWrap sx={{ fontWeight: 'bold' }}>
+            {`${person.nume} ${person.prenume}`}
+          </Typography>
+          <Typography align='center' variant="body2" color="rgba(255,255,255,0.7)">
+            Consultant Financiar
+          </Typography>
         </Box>
-
-        {/* Right Button */}
-        <IconButton
-
-          onClick={handleNext}
-
-
-          disabled={startIndex + visibleCount >= consultants.length}
-        >
-          <ArrowForwardIos />
-        </IconButton>
-
-      </Stack></>
-  );
+      ))}
+    </Box>
+  </Box>
+);
 };

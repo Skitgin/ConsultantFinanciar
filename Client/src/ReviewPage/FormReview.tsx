@@ -102,82 +102,125 @@ export default function AddProduct({ onReviewAdded }: AddReviewProps) {
     setValue(0);
   };
 
-  return (
-    <>
-      <Grid container spacing={3} maxWidth='lg' sx={{ mx: 'auto', justifyContent: "center", alignContent: "center", bgcolor: "", userSelect: "none" }}>
-        <Grid size={10} padding={0}> <Box >
-          <Typography variant="h3" fontWeight={"light"} sx={{ mb: 2, mt: 2, display: 'flex', justifyContent: 'center', fontWeight: "100", color: '#494D5F', userSelect: "none" }}> Opinia ta contează pentru noi!</Typography>
-          <Divider />
-        </Box></Grid>
-        <Grid size={4} sx={{
-          userSelect: "none",
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-        }}>  <Box sx={{ bgcolor: "#494D5F", width: '100%', height: '100%', p: 4, borderRadius: 3, boxShadow: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', userSelect: "none" }}>
-            <Typography variant='h5' align="center" sx={{ mb: 1, mt: 0, color: "#ffff", userSelect: "none" }}>Alege Consultantul Tau</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', userSelect: "none" }}><ConsultantRoaster  setName={setForm} consultants={consultants} /></Box>
+return (
+  <Grid 
+    container 
+    spacing={3} 
+    maxWidth="lg" 
+    sx={{ mx: 'auto', justifyContent: "center", userSelect: "none", p: 2 }}
+  >
+    <Grid size={12}> 
+      <Typography 
+        variant="h3" 
+        textAlign="center"
+        sx={{ my: 2, fontWeight: 100, color: '#494D5F', fontSize: { xs: '2rem', md: '3rem' } }}
+      >
+        Opinia ta contează pentru noi!
+      </Typography>
+      <Divider />
+    </Grid>
 
-          </Box>
+    {/* Sidebar Section - Bumped to size 5 on desktop for more room */}
+    <Grid 
+      size={{ xs: 12, md: 4 }} 
+      sx={{ display: 'flex' }}
+    >
+      <Box sx={{ 
+        bgcolor: "#494D5F", 
+        width: '100%', // Ensure it fills the grid item
+        p: { xs: 1, sm: 2 }, // REDUCED PADDING: This is the main fix
+        borderRadius: 3, 
+        boxShadow: 3, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+      }}>
+        <Typography align="center" variant='h5' sx={{ mt: 2,mb: 3, color: "#fff", textAlign: 'center' }}>
+          Alege Consultantul Tau
+        </Typography>
+        
+        {/* Full width container for the roaster */}
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <ConsultantRoaster setName={setForm} consultants={consultants} />
+        </Box>
+      </Box>
+    </Grid>
 
+    {/* Form Section - Size 7 to match the 12-column grid */}
+    <Grid size={{ xs: 12, md: 6 }}>
+      <Box 
+        component="form" 
+        onSubmit={handleSubmit} 
+        sx={{ 
+          height: '100%', 
+          p: { xs: 2, sm: 4 }, 
+          borderRadius: 3, 
+          boxShadow: 3, 
+          display: 'flex', 
+          flexDirection: "column", 
+          alignItems: "center", 
+          gap: 2 
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, gap: 2, width: "100%" }}>
+          <TextField
+            required
+            fullWidth
+            name="nume"
+            label="Nume"
+            value={form.nume}
+            onChange={handleChange}
+            sx={{ bgcolor: "white", borderRadius: 1 }}
+          />
+          <TextField
+            required
+            fullWidth
+            label="Prenume"
+            name="prenume"
+            value={form.prenume}
+            onChange={handleChange}
+            sx={{ bgcolor: "white", borderRadius: 1 }}
+          />
+        </Box>
 
+        <TextField
+          required
+          name="descriere"
+          label="Cum a fost experiența ta cu consultantul tau ?"
+          value={form.descriere}
+          multiline
+          rows={5}
+          onChange={handleChange}
+          sx={{ bgcolor: "white", width: "100%", borderRadius: 1 }}
+        />
 
-        </Grid>
-        <Grid size={6} sx={{ height: '100%', userSelect: "none" }}>
-          <Box component="form" onSubmit={handleSubmit} sx={{ height: '100%', p: 4, borderRadius: 3, boxShadow: 3, display: 'flex', flexDirection: "column", alignItems: "center", gap: 2, width: "100%", userSelect: "none" }}>
-            <Box sx={{ display: "flex", alignContent: "center", justifyContent: 'space-between', gap: 1, width: "100%", borderRadius: 3, userSelect: "none" }}>
-              <TextField
-                required
-                name="nume"
-                label="Nume"
-                value={form.nume}
-                onChange={handleChange}
-                sx={{ mt: 2, bgcolor: "white", flexGrow: 1, borderRadius: 1, }}
-              />
-              <TextField
-                required
-                label="Prenume"
-                name="prenume"
-                value={form.prenume}
-                onChange={handleChange}
-                sx={{ mt: 2, bgcolor: "white", flexGrow: 1, borderRadius: 1, }}
-              />
-            </Box>
-            <TextField
-              required
-              name="descriere"
-              label="Cum a fost experiența ta cu consultantul tau ?"
-              value={form.descriere}
-              multiline
-              rows={5}
-              onChange={handleChange}
-              sx={{ bgcolor: "white", mt: 1, mb: 2, width: "100%", borderRadius: 1, }}
-            />
-            <Box sx={{ alignContent: 'center', borderRadius: 3, }}>
-              <Typography variant='h5' sx={{ mb: 2, display: 'flex', justifyContent: 'center', alignContent: 'center', userSelect: "none" }}>Rating</Typography>
-              <Rating
-                sx={{ color: "#ffa600" }}
-                name="scor"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                  handleChange({
-                    target: {
-                      name: "scor",
-                      value: newValue || 0
-                    }
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  } as any);
-                }}
-              /></Box>
-            <Divider sx={{ mt: 0 }} />
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant='h5' sx={{ mb: 1 }}>Rating</Typography>
+          <Rating
+            sx={{ color: "#ffa600" }}
+            name="scor"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              handleChange({
+                target: { name: "scor", value: newValue || 0 }
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              } as any);
+            }}
+          />
+        </Box>
 
-            <Button type="submit" variant="contained" size="large" sx={{ bgcolor: "#8458B3", mb: 0.5, ml: 0, display: "flex", justifyContent: "center", alignContent: "center", height: 50, width: 200 }}>Publica Recenzia</Button>
-          </Box>
-        </Grid>
-
-      </Grid></>
-  )
+        <Button 
+          type="submit" 
+          variant="contained" 
+          size="large" 
+          sx={{ bgcolor: "#8458B3", height: 50, width: 200, mt: 1 }}
+        >
+          Publica Recenzia
+        </Button>
+      </Box>
+    </Grid>
+  </Grid>
+);
 }

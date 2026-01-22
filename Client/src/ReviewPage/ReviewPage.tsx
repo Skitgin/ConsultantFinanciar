@@ -21,8 +21,8 @@ function ReviewPage() {
       <Box>
         <FormReview onReviewAdded={refreshList} />
       </Box>
-      <Divider sx={{ mt: 3 }}></Divider>
-      <Box sx={{ p: 0, mt: 0, mb: 3 }} >
+      <Divider sx={{boxShadow:2}} ></Divider>
+      <Box sx={{ p: 0, mt: 0, mb:3}} >
         {isLoading?(<LinearProgress />):(<Catalog reviews={reviews} />)}
         
       </Box>

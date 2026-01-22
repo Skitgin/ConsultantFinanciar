@@ -8,11 +8,11 @@ export function useAfterLCP() {
       const entries = list.getEntries();
       if (entries.length > 0) {
         setIsLCPReady(true);
-        observer.disconnect(); // Stop listening once LCP is found
+        observer.disconnect(); 
       }
     });
 
-    // Observe largest-contentful-paint entries
+    
     observer.observe({ type: 'largest-contentful-paint', buffered: true });
 
     return () => observer.disconnect();

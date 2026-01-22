@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardContent, CardMedia, Divider, Rating, Typography } from "@mui/material";
+import { Box, Divider, Rating, Typography } from "@mui/material";
 import type { Review } from "../app/models/Review";
 type Props = {
   review: Review;
@@ -7,90 +7,99 @@ type Props = {
 export default function ProductCard({ review }: Props) {
 
 
-  return (
-    <Card
-      elevation={3}
-      sx={{
-        userSelect: "none",
-        bgcolor: " #ffff",
-        width: 500,
-        borderRadius: 2,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
 
-      }}
-    >
+return (
+  <Box
+   sx={{
+    boxShadow: 3,
+    bgcolor: "#ffffff",
+    borderRadius: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    overflow: 'hidden',
+    userSelect: "none",
 
-      <CardMedia
-        sx={{ bgcolor: "#8458B3" }}
-        //image={review.pictureUrl}
-        title={review.nume + " " + review.prenume}
-      >  <Typography
+    // --- RESPONSIVE LOGIC ---
+    height: 280,            // Fixed height ensures they all look identical
+    width: "100%",          // Allows it to shrink with the parent
+    maxWidth: {
+      xs: "100%",           // Full width on mobile
+      sm: "350px",          // Fixed width on larger screens
+    },
+    flex: "1 1 300px",      // Grow and shrink uniformly
+    }}
+  >
+    {/* Header Section (Replaces CardMedia) */}
+    <Box sx={{ bgcolor: "#8458B3", pb: 1 }}>
+      <Typography
         align="center"
+        color="#ffffff"
+        sx={{ 
+          mt: 3, 
+          display: "flex", 
+          justifyContent: "center", 
+          alignContent: "center" 
+        }}
+        variant="h5"
+      >
+        {review.nume + " " + review.prenume}
+      </Typography>
+    </Box>
 
-        color="#ffff"
-        sx={{ mt: 3, display: "flex", justifyContent: "center", alignContent: "center" }}
-        variant="h5">
-          {review.nume + " " + review.prenume}
-        </Typography>
-        <Divider sx={{ width: '100%', mt: 2 }} /></CardMedia>
-      <CardContent>
-        <Box sx={{ bgcolor: "#ffff", height: "100%", borderRadius: 3 }}>  <Typography
+    {/* Content Section (Replaces CardContent) */}
+    <Box sx={{ flexGrow: 1, px: 2, py: 1 }}>
+      <Box sx={{ bgcolor: "#ffffff", height: "100%", borderRadius: 3 }}>
+        <Typography
           variant="body1"
           sx={{
-            p: 2, color: "#494D5F",
-            // 1. Set the visual limit (e.g., 4 lines)
-            lineHeight: 1.5, // Standard line height
-            maxHeight: '6em', // Calculation: 1.5 (lineHeight) * 4 (maxRows) = 6em
-
-            // 2. Make it scrollable
-            overflowY: 'auto', overflowX: 'hidden',
-            wordBreak: 'break-word',  // Break long words
+            p: 1, 
+            color: "#494D5F",
+            lineHeight: 1.5,
+            maxHeight: '140px', // Adjusted to fit the 250px total height
+            overflowY: 'auto', 
+            overflowX: 'hidden',
+            wordBreak: 'break-word',
             whiteSpace: 'pre-wrap',
-
-            // 3. Optional: Customize scrollbar for 2026 look
-            '&::-webkit-scrollbar': {
-              width: '4px',
-            },
+            display: 'block',
+            '&::-webkit-scrollbar': { width: '4px' },
             '&::-webkit-scrollbar-thumb': {
               backgroundColor: 'rgba(0,0,0,0.1)',
               borderRadius: '10px',
             },
-
-            // Ensure it stays a block element to handle overflow
-            display: 'block',
-            paddingRight: 1, // Space for scrollbar
           }}
         >
-
-
           {review.descriere}
-        </Typography></Box>
-
-
-      </CardContent>
-      <Divider sx={{ width: '100%', mt: 2 }} />
-      <CardActions sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-        <Typography
-          gutterBottom
-          sx={{ px: 2, color: "#494D5F" }}
-          variant="subtitle2">
-          {"Consultant Financiar: " + review.consultant}
         </Typography>
-        <Box >
-          <Rating
-            sx={{ px: 2, color: "#ffb766" }}
-            name="Scor"
-            value={review.scor}
-            readOnly
+      </Box>
+    </Box>
 
-
-          /></Box>
-
-      </CardActions>
-
-    </Card>
-
-  )
+    {/* Footer Section (Replaces CardActions) */}
+    <Box sx={{flexShrink:1}}>
+      <Divider sx={{ width: '100%' }} />
+      <Box 
+        sx={{ 
+          display: "flex", 
+          flexDirection: "row", 
+          justifyContent: "space-between", 
+          alignItems: "center",
+          p: 1 
+        }}
+      >
+        <Typography
+          sx={{ px: 2, color: "#494D5F" }}
+          variant="subtitle2"
+        >
+          {review.consultant}
+        </Typography>
+        <Rating
+          sx={{ px: 2, color: "#ffb766" }}
+          name="Scor"
+          value={review.scor}
+          readOnly
+        />
+      </Box>
+    </Box>
+  </Box>
+);
 }
