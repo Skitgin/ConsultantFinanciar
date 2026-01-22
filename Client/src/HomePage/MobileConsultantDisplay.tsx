@@ -53,8 +53,8 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
     sx={{ 
       width: '100%', 
       position: 'relative', 
-      px: 0, // Removed padding to let cards use full space
-      minHeight: '620px' // Ensure the stack itself has height
+      py: 1, // Removed padding to let cards use full space
+      minHeight: '500px' // Ensure the stack itself has height
     }}
   >
     {/* Left Navigation Arrow */}
