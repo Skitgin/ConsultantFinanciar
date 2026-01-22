@@ -63,7 +63,7 @@ export const ReviewRoaster = ({ reviews }: Props) => {
       </IconButton>
 
       {/* 3. The Display Area */}
-      <Box sx={{ display: 'flex', gap: 2, overflow: "hidden", justifyContent: 'center', alignContent: 'center', p: 3, position: "relative" }}>
+      <Box sx={{ display: 'flex', gap: 2, overflow: "hidden", justifyContent: 'center', alignContent: 'center', p: 1, position: "relative" }}>
         <AnimatePresence mode="popLayout" initial={true}>
           {visibleReviews.map((review: Review) => (<motion.div
             // style={{ display: "contents" }}

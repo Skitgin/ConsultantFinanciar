@@ -20,7 +20,7 @@ return (
       bgcolor: '#494D5F', 
       width: '100%', 
       maxWidth: 400, // Reduced from 500 to fit mobile screens better
-      height: 600,   // Adjusted height to fit mobile viewports
+      height: 500,   // Adjusted height to fit mobile viewports
       borderRadius: 6, 
       boxShadow: 4, 
       display: 'flex', 

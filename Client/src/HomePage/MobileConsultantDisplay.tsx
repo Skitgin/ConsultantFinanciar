@@ -45,91 +45,98 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
 
 
 
-  return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ width: '100%', position: 'relative', p: 1 }}
+ return (
+  <Stack
+    direction="row"
+    alignItems="center"
+    justifyContent="center"
+    sx={{ 
+      width: '100%', 
+      position: 'relative', 
+      px: 0, // Removed padding to let cards use full space
+      minHeight: '620px' // Ensure the stack itself has height
+    }}
+  >
+    {/* Left Navigation Arrow */}
+    <IconButton
+      onClick={handlePrev}
+      sx={{
+        position: 'absolute',
+        left: 0, // Moved closer to the edge
+        zIndex: 20,
+        bgcolor: 'rgba(0,0,0,0.05)', // Subtle dark tint instead of white
+        '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
+      }}
     >
-      {/* Left Navigation Arrow */}
-      <IconButton
-        onClick={handlePrev}
-        sx={{
-          position: 'absolute',
-          left: 5,
-          zIndex: 20,
-          bgcolor: 'rgba(255,255,255,0.3)',
-          '&:hover': { bgcolor: 'rgba(255,255,255,0.5)' }
-        }}
-      >
-        <ArrowBackIosNew fontSize="small" />
-      </IconButton>
+      <ArrowBackIosNew fontSize="small" />
+    </IconButton>
 
-      {/* Display Area */}
-      <Box
-        sx={{
-          display: 'flex',
-          borderRadius: 4,
-          boxShadow: 3,
-          background: 'linear-gradient(0deg, #48bfe3 50%, #d65db1 90%)',
-          overflow: "hidden", // Keeps the gradient inside the corners
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: "relative",
-          minHeight: '600px',
-          width: '100%',
-        }}
-      >
-        {/* Optimization: We add a centered wrapper for AnimatePresence 
-       to ensure the 'popLayout' absolute positioning stays centered.
-    */}
-        <Box sx={{ position: 'relative', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <AnimatePresence mode="popLayout" initial={false}>
-            {visibleReviews.map((consultant: Consultant) => (
-              <motion.div
-                key={consultant.id}
-                onTap={() => setIsPaused(true)}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                style={{
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '0 40px', // Prevents the card from touching the absolute arrows
-                }}
-              >
-                <Box sx={{
-                  width: '100%',
-                  maxWidth: '300px', // Slightly smaller to ensure it never hits the edges
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}>
-                  <ConsultantCardMobile consultant={consultant} />
-                </Box>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </Box>
+    {/* Display Area - Background removed */}
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: "relative",
+        width: '100%',
+        height: '100%',
+        // overflow: "hidden" is removed here so cards can slide 
+        // in/out without getting "cut" at the container edge
+      }}
+    >
+      <Box sx={{ 
+        position: 'relative', 
+        width: '100%', 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+      }}>
+        <AnimatePresence mode="popLayout" initial={false}>
+          {visibleReviews.map((consultant: Consultant) => (
+            <motion.div
+              key={consultant.id}
+              onTap={() => setIsPaused(true)}
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80 }}
+              transition={{ type: "spring", stiffness: 260, damping: 25 }}
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '0 10px', // Space for the card not to touch the screen edge
+              }}
+            >
+              <Box sx={{
+                width: '100%',
+                maxWidth: '320px', // Match the card's native width
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
+                <ConsultantCardMobile consultant={consultant} />
+              </Box>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </Box>
-      {/* Right Navigation Arrow */}
-      <IconButton
-        onClick={handleNext}
-        sx={{
-          position: 'absolute',
-          right: 5,
-          zIndex: 20,
-          bgcolor: 'rgba(255,255,255,0.3)',
-          '&:hover': { bgcolor: 'rgba(255,255,255,0.5)' }
-        }}
-      >
-        <ArrowForwardIos fontSize="small" />
-      </IconButton>
-    </Stack>
-  );
+    </Box>
+
+    {/* Right Navigation Arrow */}
+    <IconButton
+      onClick={handleNext}
+      sx={{
+        position: 'absolute',
+        right: 0, // Moved closer to the edge
+        zIndex: 20,
+        bgcolor: 'rgba(0,0,0,0.05)',
+        '&:hover': { bgcolor: 'rgba(0,0,0,0.1)' }
+      }}
+    >
+      <ArrowForwardIos fontSize="small" />
+    </IconButton>
+  </Stack>
+);
 };
 
 export default MobileConsultantDisplay;
