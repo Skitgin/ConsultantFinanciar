@@ -38,12 +38,13 @@ return (
         height: 100, 
         width: 100, 
         border: '3px solid #f8a100',
-        mb: 2 
+        mb: 2 ,
+        pointerEvents: 'none'
       }} 
     />
 
     {/* 2. Name and Title Under It */}
-    <Box sx={{ width: '100%', mb: 2 }}>
+    <Box sx={{ width: '100%', mb: 2 ,pointerEvents: 'none'}}>
       <Typography variant="h5" color='white' align='center' fontWeight="bold">
         {consultant.nume + " " + consultant.prenume}
       </Typography>
@@ -68,9 +69,10 @@ return (
           textAlign: 'center',
           '&::-webkit-scrollbar': { width: '4px' },
           '&::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgba(255,255,255,0.2)',
-            borderRadius: '10px',
-            touchAction: 'pan-y',
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          borderRadius: '10px',
+          touchAction: 'pan-y',
+          pointerEvents: 'auto'
           },
         }}
       >
@@ -93,7 +95,7 @@ return (
           borderRadius: 5,
           textTransform: 'none',
           fontSize: '1rem',
-          '&:hover': { bgcolor: '#6a4691' }
+          '&:hover': { bgcolor: '#6a4691',color: "#f8a100" }
         }}
       >
         Programeaza o Sedinta

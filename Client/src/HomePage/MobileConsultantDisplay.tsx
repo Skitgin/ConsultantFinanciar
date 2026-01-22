@@ -25,7 +25,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleDragEnd = (event: any, info: { offset: { x: number } }) => {
-    const swipeThreshold = 50;
+    const swipeThreshold = 25;
     if (info.offset.x < -swipeThreshold) handleNext();
     else if (info.offset.x > swipeThreshold) handlePrev();
   };
