@@ -18,6 +18,7 @@ namespace API.Controllers
             string apiKey = "pub_178496cc09344b51aa05b5dde1e6237f";
             string url = $"https://newsdata.io/api/1/latest? apikey={apiKey} &country=ro&image=1&domainurl=www.zf.ro";
             using var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
             var response = await client.GetFromJsonAsync<dynamic>(url);
             var results = new List<CleanNewsDto>();
             if (response is null || response is JsonElement { ValueKind: JsonValueKind.Null })
