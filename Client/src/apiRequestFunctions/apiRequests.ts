@@ -1,3 +1,4 @@
+import type { CleanNewsDto } from "../app/models/CleanNewsDto";
 import type { Consultant } from "../app/models/Consultant";
 import type { Review } from "../app/models/Review"
 import type { ReviewInput } from "../app/models/ReviewInput"
@@ -31,4 +32,7 @@ export async function fetchReviewList(): Promise<Review[]> {
 
 export async function fetchConsultantList(): Promise<Consultant[]> {
     return await apiRequest<Consultant[]>(`${API_URL}/api/Consultants`, 'GET');
+}
+export async function fetchNewsList(): Promise<CleanNewsDto[]> {
+    return await apiRequest<CleanNewsDto[]>(`${API_URL}/api/News`, 'GET');
 }

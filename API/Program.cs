@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -28,6 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+//remove Cors logic before production 
 
 app.UseAuthorization();
 

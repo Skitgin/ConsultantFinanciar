@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\corne\\ConsultantFinanciar\\API\\API.csproj": {}
+    "C:\\Users\\corne\\ConsultantFinanciar\\Api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\corne\\ConsultantFinanciar\\API\\API.csproj": {
+    "C:\\Users\\corne\\ConsultantFinanciar\\Api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\corne\\ConsultantFinanciar\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\corne\\ConsultantFinanciar\\Api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\corne\\ConsultantFinanciar\\API\\API.csproj",
+        "projectPath": "C:\\Users\\corne\\ConsultantFinanciar\\Api\\API.csproj",
         "packagesPath": "C:\\Users\\corne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\corne\\ConsultantFinanciar\\API\\obj\\",
+        "outputPath": "C:\\Users\\corne\\ConsultantFinanciar\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
