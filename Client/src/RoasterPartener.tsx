@@ -14,7 +14,7 @@ export const RoasterPartener = ({ parteneri }: Prop) => {
     // 2. State to track the first visible card
     //const [isPaused, setIsPaused] = useState(false);
     const [startIndex, setStartIndex] = useState(0);
-    const visibleCount = 3;
+    const visibleCount = 8;
     const totalItems = parteneri.length
     const visiblePartners = useMemo(() => {
         const endIndex = startIndex + visibleCount;

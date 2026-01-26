@@ -5,5 +5,8 @@ export type Consultant={
     imageUrl:string;
     descriere:string;
     link:string;
+    linkLinkedIn?:string;
+    linkInstagram?:string;
+    linkFacebook?:string;
     
 }

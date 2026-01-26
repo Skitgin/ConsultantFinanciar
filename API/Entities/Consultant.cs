@@ -13,13 +13,17 @@ namespace API.Entities
 
         public required string Prenume { get; set; }
 
-
         public required string Descriere { get; set; }
 
         public required string ImageUrl { get; set; }
 
-
         public required string Link { get; set; }
+
+        public string? LinkLinkedIn { get; set; }
+
+        public string? LinkInstagram { get; set; }
+
+        public string? LinkFacebook { get; set; }
 
     }
 }

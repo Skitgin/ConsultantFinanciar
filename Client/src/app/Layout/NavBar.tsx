@@ -19,20 +19,20 @@ const navStyles = {
 };
 
 export default function NavBar() {
-   const [mobileOpen, setMobileOpen] = useState(false);
-   
-    const handleDrawerToggle = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
 
-   const drawerContent = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: 250 , height:"100%", bgcolor: "#494D5F" }}>
+  const drawerContent = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: 250, height: "100%", bgcolor: "#494D5F" }}>
       <List >
         {midLinks.map(({ title, path }) => (
           <ListItem key={path} disablePadding>
-            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor:"#003a6c",borderRadius:3 , mt:1,ml:1 , mr:1, }}>
-              <ListItemText sx={{color:"#ffff"}}  primary={title.toUpperCase()} />
+            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor: "#003a6c", borderRadius: 3, mt: 1, ml: 1, mr: 1, }}>
+              <ListItemText sx={{ color: "#ffff" }} primary={title.toUpperCase()} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -41,24 +41,31 @@ export default function NavBar() {
   );
 
 
-   return (
+  return (
     <>
-      <AppBar position="static" sx={{ bgcolor: "#003a6c" , }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-          
-          {/* Logo Section */}
-          <Button
-            sx={{ borderRadius: 50, display: "flex", flex: 1, justifyContent: "flex-start" }}
-            component={Link}
-            to="/"
-            startIcon={<img src={'/LogoWhite.webp'} style={{ width: 65, height: 65 }} alt="Logo" />}
-          />
+      <AppBar position="static" sx={{ bgcolor: "#003a6c" }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: "space-between", width: '100%' }}>
 
-          {/* DESKTOP LINKS: Hidden on mobile (xs), shown on small/medium (sm) and up */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, flex: 1, justifyContent: 'center' }}>
-            <List sx={{ display: 'flex' }}>
+          {/* 1. LEFT SECTION (Logo) */}
+          <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-start" }}>
+            <Button
+              sx={{ borderRadius: 50 }}
+              component={Link}
+              to="/"
+            >
+              <img src={'/LogoWhite.webp'} style={{ width: 65, height: 65 }} alt="Logo" />
+            </Button>
+          </Box>
+
+          {/* 2. CENTER SECTION (Desktop Links) */}
+          <Box sx={{
+            display: { xs: 'none', md: 'flex' },
+            flex: 1,
+            justifyContent: 'center'
+          }}>
+            <List sx={{ display: 'flex', whiteSpace: 'nowrap' }}>
               {midLinks.map(({ title, path }) => (
-                <ListItem disablePadding key={path}>
+                <ListItem disablePadding key={path} sx={{ width: 'auto' }}>
                   <ListItemButton component={NavLink} to={path} sx={navStyles}>
                     {title.toUpperCase()}
                   </ListItemButton>
@@ -67,17 +74,21 @@ export default function NavBar() {
             </List>
           </Box>
 
-          {/* MOBILE MENU ICON: Shown on mobile (xs), hidden on large screens (md) */}
+          {/* 3. RIGHT SECTION (Mobile Icon or Placeholder) */}
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              edge="start"
+              edge="end" // Changed to 'end' for better right alignment
               onClick={handleDrawerToggle}
               sx={{ display: { md: 'none' } }}
             >
               <MenuIcon fontSize="large" />
             </IconButton>
+
+            {/* Pro Tip: If you have no buttons on the right for desktop, 
+         this empty Box still needs 'flex: 1' to keep the links centered.
+      */}
           </Box>
 
         </Toolbar>

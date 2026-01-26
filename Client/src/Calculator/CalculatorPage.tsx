@@ -1,29 +1,39 @@
-import { Box, Grid } from '@mui/material'
+import { Box, Divider, Grid, Typography } from '@mui/material'
 import React from 'react'
 import Calculator from './Calculator'
 
 export default function CalculatorPage() {
   return (
-      <Grid
+    <Grid
+      size=
+      {12}
       container
       sx={{
         justifyContent: "center",
         alignContent: "center",
-        userSelect: "none",  
+        userSelect: "none",
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
         overflowX: 'hidden',
-        height:"100%"
+        height: "100%"
       }}
-    >
-
-     <Box>
-      <Calculator/>
+    >  <Box sx={{ display: "flex", alignContent: "center", justifyContent: 'center', flexDirection:"column", gap: 3 ,boxShadow:4 ,px:2,mt:2 ,borderRadius:2}}>
+        <Box sx={{ p: 2}}>
+          <Typography variant="h4" align="center">Calculator Investiții</Typography>
+          <Typography variant="h4" align="center">Dobândă Compusă</Typography>
+          <Typography variant="subtitle1" align="center" sx={{mt:2}}>Simulează creșterea investiției pe baza dobânzii compuse.</Typography>
+        </Box>
+         <Divider variant='middle'/>
+        <Box sx={{ flex: 1 }}>
+          <Calculator />
+        </Box>
       </Box>
 
 
-     
+
+
+
 
 
 

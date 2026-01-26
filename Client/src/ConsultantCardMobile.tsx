@@ -2,6 +2,7 @@ import { Avatar, Box, Button, Divider, } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { Consultant } from './app/models/Consultant';
 import { motion } from 'motion/react';
+import SocilaStack from './HomePage/SocilaStack';
 
 
 
@@ -53,6 +54,8 @@ export default function ConsultantCardMobile({ consultant, onSwipeLeft, onSwipeR
             pointerEvents: 'none'
           }} />
 
+       
+
         {/* 2. Name and Title Under It */}
         <Box sx={{ width: '100%', mb: 2, pointerEvents: 'none' }}>
           <Typography variant="h5" color='white' align='center' fontWeight="bold">
@@ -62,6 +65,7 @@ export default function ConsultantCardMobile({ consultant, onSwipeLeft, onSwipeR
             Consultant Financiar
           </Typography>
           <Divider sx={{ bgcolor: "#f8a100", width: '60%', mx: 'auto' }} />
+             <SocilaStack consultant={consultant}/>
         </Box>
 
         {/* 3. Description - THE FIX IS HERE */}

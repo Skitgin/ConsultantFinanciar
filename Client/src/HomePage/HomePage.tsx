@@ -69,7 +69,7 @@ export default function HomePage() {
         minHeight: '100px',
         pb: 4
       }}>
-        <Divider sx={{ mb: 2 }} />
+        <Divider variant="middle"sx={{ mb: 2 }} />
         <RoasterPartener parteneri={parteneri} />
       </Box>
     </Grid>
