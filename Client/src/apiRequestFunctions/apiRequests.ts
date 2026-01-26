@@ -2,8 +2,8 @@ import type { CleanNewsDto } from "../app/models/CleanNewsDto";
 import type { Consultant } from "../app/models/Consultant";
 import type { Review } from "../app/models/Review"
 import type { ReviewInput } from "../app/models/ReviewInput"
-//const API_URL = "https://consultantifinanciari.azurewebsites.net";
-const API_URL="http://localhost:5130"
+const API_URL = "https://consultantifinanciari.azurewebsites.net";
+//const API_URL="http://localhost:5130"
 async function apiRequest<T>(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
@@ -35,5 +35,5 @@ export async function fetchConsultantList(): Promise<Consultant[]> {
     return await apiRequest<Consultant[]>(`${API_URL}/api/Consultants`, 'GET');
 }
 export async function fetchNewsList(): Promise<CleanNewsDto[]> {
-    return await apiRequest<CleanNewsDto[]>(`http://localhost:5130/api/News`, 'GET');
+    return await apiRequest<CleanNewsDto[]>(`${API_URL}/api/NewsFetch`, 'GET');
 }

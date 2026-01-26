@@ -31,7 +31,7 @@ public class NewsFetchWorker : BackgroundService
             }
 
             // Wait for 2 hours
-            await Task.Delay(TimeSpan.FromHours(2), stoppingToken);
+            await Task.Delay(TimeSpan.FromHours(6), stoppingToken);
         }
     }
 
