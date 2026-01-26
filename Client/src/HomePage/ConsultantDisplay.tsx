@@ -68,7 +68,7 @@ export const ConsultantDisplay = ({ consultants }: Props) => {
                     gap: 0,
                     borderRadius: 5,
                     boxShadow: 3,
-                    background: 'linear-gradient(0deg,  #48bfe3 50%,  #d65db1 90%)',
+                    background:"#F7F7FF",
                     overflow: "hidden",
                     justifyContent: 'center',
                     alignItems: 'center',

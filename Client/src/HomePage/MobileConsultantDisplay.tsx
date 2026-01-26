@@ -52,13 +52,13 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
           onTap={()=>setIsExpanded(true)}
 
 
-          // ANIMATION LOGIC
+        
           initial={{ x: 100, scale: 0.9 }}
           animate={{
             x: 0,
-            // Expand to 1 (full size) if expanded, otherwise slightly smaller (0.9)
+         
             scale: 0.9,
-            // Apply contrast only when expanded
+
           }}
           exit={{
             opacity: 0,
@@ -74,7 +74,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            touchAction: 'pan-y' // Vital for roaster scrolling
+            touchAction: 'pan-y' 
           }}
         >
 
@@ -92,7 +92,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
               width: i === startIndex ? 12 : 8,
               height: 8,
               borderRadius: 4,
-              bgcolor: i === startIndex ? '#8458B3' : 'rgba(0,0,0,0.2)',
+              bgcolor: i === startIndex ? '#537bff' : 'rgba(0,0,0,0.2)',
               transition: 'all 0.3s ease'
             }}
           />

@@ -34,5 +34,5 @@ export async function fetchConsultantList(): Promise<Consultant[]> {
     return await apiRequest<Consultant[]>(`${API_URL}/api/Consultants`, 'GET');
 }
 export async function fetchNewsList(): Promise<CleanNewsDto[]> {
-    return await apiRequest<CleanNewsDto[]>(`${API_URL}/api/News`, 'GET');
+    return await apiRequest<CleanNewsDto[]>(`http://localhost:5130/api/News`, 'GET');
 }

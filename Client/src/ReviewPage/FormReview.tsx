@@ -215,7 +215,7 @@ return (
           type="submit" 
           variant="contained" 
           size="large" 
-          sx={{ bgcolor: "#8458B3", height: 50, width: 200, mt: 1 }}
+          sx={{ bgcolor: "#0061b6", height: 50, width: 200, mt: 1 }}
         >
           Publica Recenzia
         </Button>

@@ -7,14 +7,15 @@ const midLinks = [
   { title: 'acasă', path: '/' },
   { title: 'recenzii', path: '/recenzii' },
   { title: 'știri', path: '/stiri' },
+  { title: 'calculator', path: '/calculator' },
 ];
 
 const navStyles = {
   color: '#ffffff',
   typography: 'h6',
   textDecoration: 'none',
-  '&:hover': { color: '#00FFE1' },
-  '&.active': { color: '#00FFE1' },
+  '&:hover': { color: '#FFBf65' },
+  '&.active': { color: '#f8a100' },
 };
 
 export default function NavBar() {
@@ -30,7 +31,7 @@ export default function NavBar() {
       <List >
         {midLinks.map(({ title, path }) => (
           <ListItem key={path} disablePadding>
-            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor:"#8458B3",borderRadius:3 , mt:1,ml:1 , mr:1, }}>
+            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor:"#003a6c",borderRadius:3 , mt:1,ml:1 , mr:1, }}>
               <ListItemText sx={{color:"#ffff"}}  primary={title.toUpperCase()} />
             </ListItemButton>
           </ListItem>
@@ -42,7 +43,7 @@ export default function NavBar() {
 
    return (
     <>
-      <AppBar position="static" sx={{ bgcolor: "#8458B3" }}>
+      <AppBar position="static" sx={{ bgcolor: "#003a6c" , }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
           
           {/* Logo Section */}

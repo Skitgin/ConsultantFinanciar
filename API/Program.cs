@@ -3,6 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // Match your frontend URL
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 
 
@@ -30,10 +39,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 //remove Cors logic before production 
+app.UseRouting();
+app.UseCors("MyCorsPolicy");
 
 app.UseAuthorization();
 
 app.MapControllers();
-DbInitializer.InitDb(app);
+//DbInitializer.InitDb(app);
 
 app.Run();

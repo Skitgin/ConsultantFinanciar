@@ -31,7 +31,7 @@ return (
     }}
   >
     {/* Header Section (Replaces CardMedia) */}
-    <Box sx={{ bgcolor: "#8458B3", pb: 1 }}>
+    <Box sx={{ bgcolor: "#003a6c", pb: 1 }}>
       <Typography
         align="center"
         color="#ffffff"

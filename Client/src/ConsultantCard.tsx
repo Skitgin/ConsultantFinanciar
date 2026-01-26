@@ -74,7 +74,7 @@ export default function ConsultantCard({ consultant }: Props) {
 
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "end", alignContent: "end", px: 3 }}>
-          <Button  target="_blank"  rel="noopener noreferrer" href={consultant.link} size="large" variant="contained" sx={{ bgcolor: "#8458B3", color: "#ffff", p: 2, borderRadius: 5, }}>Programeaza o Sedinta</Button>
+          <Button  target="_blank"  rel="noopener noreferrer" href={consultant.link} size="large" variant="contained" sx={{ bgcolor: "#0061b6", color: "#ffff", p: 2, borderRadius: 5, }}>Programeaza o Sedinta</Button>
       </CardActions>
     </Card>
   );

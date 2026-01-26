@@ -30,19 +30,17 @@ export default function HomePage() {
         justifyContent: "center",
         alignContent: "center",
         bgcolor: "#e5eaf5",
-        userSelect: "none",
-        // 1. Remove hard 'column' for all screens, allow it to be fluid
+        userSelect: "none",  
         display: 'flex',
         flexDirection: 'column',
-        // 2. Ensure the grid takes full width available
         width: '100%',
         overflowX: 'hidden'
       }}
     >
-      {/* Display Area for Consultants */}
+     
       <Box sx={{
         width: '100%',
-        // 3. Changed fixed 720px to a responsive height
+     
         minHeight: { xs: '500px', md: '720px' },
         display: 'flex',
         alignItems: 'center'
@@ -55,21 +53,21 @@ export default function HomePage() {
         )}
       </Box>
 
-      {/* Partners Header */}
+  
       <Box sx={{
         display: "flex",
         justifyContent: "center",
         alignContent: "center",
-        my: 2 // Added vertical margin for spacing
+        my: 2 
       }}>
         <Typography variant="h6">Parteneri</Typography>
       </Box>
 
-      {/* Partners Slider Area */}
+     
       <Box sx={{
         width: '100%',
         minHeight: '100px',
-        pb: 4 // Padding at the bottom for mobile thumb clearance
+        pb: 4
       }}>
         <Divider sx={{ mb: 2 }} />
         <RoasterPartener parteneri={parteneri} />

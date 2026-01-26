@@ -25,16 +25,18 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
 
 
   const handleName = (number: number) => {
+    const ConsName =consultants[number].nume +" "+ consultants[number].prenume
     setName((prev) => ({
       ...prev,
-      consultant: consultants[number].nume,
+      consultant: ConsName,
     }));
   }
   useEffect(() => {
     if (consultants.length > 0 && consultants[startIndex])
+      
       setName((prev) => ({
         ...prev,
-        consultant: consultants[startIndex].nume,
+        consultant: consultants[startIndex].nume +" "+ consultants[startIndex].prenume, 
       }));
 
   }, [setName, startIndex, consultants]);
