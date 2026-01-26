@@ -23,8 +23,8 @@ builder.Services.AddDbContext<ReviewContext>(opt =>
 {
     opt.UseSqlite(connectionString);
 });
-builder.Services.AddHttpClient();
-builder.Services.AddHostedService<NewsFetchWorker>();
+//builder.Services.AddHttpClient();
+//builder.Services.AddHostedService<NewsFetchWorker>();
 
 var app = builder.Build();
 
