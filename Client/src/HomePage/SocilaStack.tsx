@@ -18,13 +18,13 @@ export default function SocilaStack({ consultant }: Prop) {
     if(consultant.linkFacebook)hasFacebook=true
     return (
         <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", alignContent: "center", }}>
-            {hasLinkedIn ? (<IconButton aria-label="linkedIn" style={{ color: 'white' }}>
+            {hasLinkedIn ? (<IconButton aria-label="linkedIn" href={consultant.linkLinkedIn} component='a' target="_blank" rel='noopener noreferrer' style={{ color: 'white' }}>
                 <LinkedInIcon />
             </IconButton>) : (<div />)}
-           { hasInstagram? (<IconButton aria-label="Instagram" style={{ color: 'white' }}  >
+           { hasInstagram? (<IconButton aria-label="Instagram" style={{ color: 'white' }}  href={consultant.linkInstagram} component='a' target="_blank" rel='noopener noreferrer' >
                 <InstagramIcon />
             </IconButton>) :(<div />)}
-            {hasFacebook?(<IconButton aria-label="Facebook" style={{ color: 'white' }}  >
+            {hasFacebook?(<IconButton aria-label="Facebook" style={{ color: 'white' }}  href={consultant.linkFacebook} component='a' target="_blank" rel='noopener noreferrer' >
                 <FacebookIcon />
             </IconButton>):(<div/>)}
 

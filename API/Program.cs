@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+/*builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyCorsPolicy", policy =>
     {
@@ -11,7 +11,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
-});
+});*/
 
 
 
@@ -21,13 +21,10 @@ builder.Services.AddOpenApi();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ReviewContext>(opt =>
 {
-    opt.UseSqlServer(connectionString,sqlOptions => 
-        sqlOptions.EnableRetryOnFailure(
-            maxRetryCount: 5, 
-            maxRetryDelay: TimeSpan.FromSeconds(10), 
-            errorNumbersToAdd: null));
+    opt.UseSqlite(connectionString);
 });
-
+builder.Services.AddHttpClient();
+builder.Services.AddHostedService<NewsFetchWorker>();
 
 var app = builder.Build();
 
@@ -45,6 +42,6 @@ app.UseCors("MyCorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
-//DbInitializer.InitDb(app);
+DbInitializer.InitDb(app);
 
 app.Run();

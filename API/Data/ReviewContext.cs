@@ -8,4 +8,8 @@ public class ReviewContext(DbContextOptions<ReviewContext> options) : DbContext(
 {
     public required DbSet<Review> Reviews { get; set; }
     public required DbSet<Consultant> Consultants { get; set; }
+
+    public required DbSet<CleanNewsDto>News{ get; set; }
+
+
 }

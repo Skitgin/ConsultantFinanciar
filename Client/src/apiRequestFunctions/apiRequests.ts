@@ -2,7 +2,8 @@ import type { CleanNewsDto } from "../app/models/CleanNewsDto";
 import type { Consultant } from "../app/models/Consultant";
 import type { Review } from "../app/models/Review"
 import type { ReviewInput } from "../app/models/ReviewInput"
-const API_URL = "https://consultantifinanciari.azurewebsites.net";
+//const API_URL = "https://consultantifinanciari.azurewebsites.net";
+const API_URL="http://localhost:5130"
 async function apiRequest<T>(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
