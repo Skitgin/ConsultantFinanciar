@@ -36,8 +36,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 //remove Cors logic before production 
-app.UseRouting();
-app.UseCors("MyCorsPolicy");
+//app.UseRouting();
+//app.UseCors("MyCorsPolicy");
 
 app.UseAuthorization();
 
