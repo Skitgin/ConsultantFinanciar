@@ -2,10 +2,6 @@
   "name": "client",
   "compatibility_date": "2026-01-27",
   "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
-  },
-  "observability": {
-    "enabled": true
+    "directory": "./client/dist" // Tell it to look inside the client folder
   }
 }
