@@ -18,11 +18,12 @@ export default function Calculator() {
 
     const Calculeaza = (dobanda: number | null, plataLunara: number | null, sumaInitiala: number | null, perioadaDeCapitalizare: number | null, perioadaDeEconomisire: number | null) => {
 
-        if (plataLunara !== null) {
+        if (plataLunara !== null&&perioadaDeEconomisire!==null) {
             const sum = CalculeazaCuPlataLunara(dobanda, perioadaDeCapitalizare, perioadaDeEconomisire, plataLunara)
             let contributieTotala = 0;
+            if (sum!==undefined){
             const displayValue = sum.toLocaleString('ro-RO', { maximumFractionDigits: 0 });
-            SetDisplayedSum(displayValue)
+            SetDisplayedSum(displayValue)}
             for (let i = 0; i <= perioadaDeEconomisire; i++) {
                 const dataPoint: DataPoint = {
                     name: "Anul " + i,
@@ -52,6 +53,7 @@ export default function Calculator() {
             const displayValue = sum.toLocaleString('ro-RO', { maximumFractionDigits: 0 });
             SetDisplayedSum(displayValue)
             SetMeoPerioada(perioadaDeEconomisire)
+            if(perioadaDeEconomisire!==null){
             for(let i =0;i<=perioadaDeEconomisire;i++){
                  const dataPoint: DataPoint = {
                     name: "Anul " + i,
@@ -69,7 +71,7 @@ export default function Calculator() {
                 dataPoint.return = sumaFinala
                 SetDataPoints((prev) => [...prev, dataPoint]);
                 SetIsCalculated(true);
-            }
+            }}
         }
 
 
@@ -129,11 +131,13 @@ export default function Calculator() {
 
     }
     const CalculCuSumaInitiala = (dobanda: number | null, perioadaDeCapitalizare: number | null, ani: number | null, sumaInitiala: number | null) => {
+        if(dobanda!==null&&perioadaDeCapitalizare!==null&&ani!==null&&sumaInitiala!==null){
         const n = ani * perioadaDeCapitalizare;
         const r = (dobanda / 100) / perioadaDeCapitalizare;
         const sum = sumaInitiala * (Math.pow(1 + r, n));
          const roundedResult = Math.round(sum);
-            return roundedResult
+            return roundedResult}
+        else return 0
 
 
     }
