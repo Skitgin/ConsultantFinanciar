@@ -38,6 +38,7 @@ app.UseHttpsRedirection();
 //remove Cors logic before production 
 //app.UseRouting();
 //app.UseCors("MyCorsPolicy");
+app.MapGet("/health", () => Results.Ok());
 
 app.UseAuthorization();
 
