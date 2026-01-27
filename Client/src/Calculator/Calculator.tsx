@@ -1,9 +1,8 @@
 import { Box, Button, Divider, FormControl, MenuItem, Select, Typography, type SelectChangeEvent } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import NumberField from './NumberField'
 import IndexLineChart from './IndexLineChart';
 import type { DataPoint } from './DataPoint';
-import { memo } from 'motion/react';
 
 export default function Calculator() {
     const [forDisplay, SetForDisplay] = useState("");
@@ -186,7 +185,7 @@ export default function Calculator() {
                         </FormControl>
 
                     </Box>
-                    <Button variant='contained' size="large" sx={{ maxHeight: 50, mt: 3.5, width: "100%" }} onClick={() => { SetDataPoints([]); Calculeaza(r, plataLunara, sumaInitiala, perioadaDeCapitalizare, perioadaDeEconomisire) }}>Calculeaza</Button>
+                    <Button variant='contained' size="large" sx={{ maxHeight: 50, mt: 3.5, width: "100%", }} onClick={() => { SetDataPoints([]); Calculeaza(r, plataLunara, sumaInitiala, perioadaDeCapitalizare, perioadaDeEconomisire) }}>Calculeaza</Button>
                 </Box>
             </Box>
 

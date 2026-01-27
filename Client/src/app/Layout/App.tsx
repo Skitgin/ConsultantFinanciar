@@ -15,7 +15,7 @@ function App() {
       <NavBar  />
       <Box
         sx={{minHeight: "100vh",
-          backgroundColor: "#e5eaf5",
+          backgroundColor: "#F7F7FF",
         }}>
 
         <Container disableGutters maxWidth={false} sx={{ mt: 0 }}>

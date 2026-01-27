@@ -20,9 +20,9 @@ export default function CalculatorPage() {
       }}
     >  <Box sx={{ display: "flex", alignContent: "center", justifyContent: 'center', flexDirection:"column", gap: 3 ,boxShadow:4 ,px:2,mt:2 ,borderRadius:2}}>
         <Box sx={{ p: 2}}>
-          <Typography variant="h4" align="center">Calculator Investiții</Typography>
-          <Typography variant="h4" align="center">Dobândă Compusă</Typography>
-          <Typography variant="subtitle1" align="center" sx={{mt:2}}>Simulează creșterea investiției pe baza dobânzii compuse.</Typography>
+          <Typography  fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant="h4" align="center" sx={{letterSpacing:-0.4}}>Calculator Investiții</Typography>
+          <Typography  fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant="h4" align="center">Dobândă Compusă</Typography>
+          <Typography   fontFamily ='"Palatino Linotype", "Book Antiqua", Palatino, serif' variant="subtitle1" align="center" sx={{mt:2}}>Simulează creșterea investiției pe baza dobânzii compuse.</Typography>
         </Box>
          <Divider variant='middle'/>
         <Box sx={{ flex: 1 }}>

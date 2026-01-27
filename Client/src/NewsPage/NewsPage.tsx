@@ -14,9 +14,10 @@ export default function NewsPage() {
 
   return (
         <><Typography 
+                 fontFamily= 'Verdana, Geneva, sans-serif'
                 variant="h3" 
                 textAlign="center"
-                sx={{ p:3 ,fontWeight: 100, color: '#494D5F', fontSize: { xs: '2rem', md: '3rem' } }}
+                sx={{ p:3 ,fontWeight: 100, color:'#000', fontSize: { xs: '2rem', md: '3rem' },letterSpacing:-0.3 }}
               > Știri Financiare</Typography>
          <Divider sx={{}}/>
           <Box sx={{

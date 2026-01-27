@@ -17,11 +17,11 @@ function ReviewPage() {
   }
 
   return (
-    <Grid sx={{ display: "flex", flexDirection: "column", alignContent: "center", justifyContent: "center", bgcolor: "#e5eaf5" }} >
+    <Grid sx={{ display: "flex", flexDirection: "column", alignContent: "center", justifyContent: "center", bgcolor: "#F7F7FF" }} >
       <Box>
         <FormReview onReviewAdded={refreshList} />
       </Box>
-      <Divider sx={{boxShadow:2}} ></Divider>
+      <Divider variant="middle"sx={{boxShadow:2}} ></Divider>
       <Box sx={{ p: 0, mt: 0, mb:3}} >
         {isLoading?(<LinearProgress />):(<Catalog reviews={reviews} />)}
         

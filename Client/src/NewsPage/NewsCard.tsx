@@ -9,7 +9,7 @@ type Props = {
 
 export default function NewsCard({ news }: Props) {
     return (
-        <Card sx={{ width: "100%", maxWidth: "500px", display: 'flex', flexDirection: 'column', height: '100%', borderRadius:3 }}>
+        <Card sx={{ width: "100%", maxWidth: "500px", display: 'flex', flexDirection: 'column', height: '100%', borderRadius:3 ,boxShadow:4}}>
             <CardHeader
                 title={news.title}
             />
@@ -18,10 +18,10 @@ export default function NewsCard({ news }: Props) {
                 height="auto"
                 image={news.imageUrl}
                 alt=""
-                sx={{ maxHeight: "270px" }}
+                sx={{ maxHeight: "270px"}}
             />
             <CardContent>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                <Typography  variant="body2" sx={{ color: 'text.secondary' }}>
                     {news.description}
                 </Typography>
             </CardContent>

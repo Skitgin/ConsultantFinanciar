@@ -73,21 +73,22 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
       </IconButton>
 
       {/* Image Container */}
-      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', maxWidth: { xs: 200, sm: 250 } }}>
+      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', maxWidth: { xs: 200, sm: 250 }, filter:'contrast(120%)' }}>
         {consultants.slice(startIndex, startIndex + visibleCount).map((person) => {
           const hasNoImage = person.imageUrl.length < 1;
           return (
-            <Box key={person.id} sx={{ width: '100%' }}>
+            <Box key={person.id} sx={{ width: '100%' ,}}>
               <CardMedia
                 component="img"
                 image={hasNoImage ? '/default.png' : person.imageUrl}
                 alt={person.nume}
                 sx={{ 
+                  border: '4px solid #f8a100',
                   borderRadius: '50%', 
                   aspectRatio: '1/1', 
                   width: '100%', 
                   objectFit: 'cover',
-                  boxShadow: 3
+                  boxShadow:4
                 }}
               />
             </Box>
@@ -109,10 +110,10 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
     <Box sx={{ mt: 2 ,mb:3 }}>
       {consultants.slice(startIndex, startIndex + visibleCount).map((person) => (
         <Box key={`text-${person.id}`}>
-          <Typography align='center' variant="h6" color="white" noWrap sx={{ fontWeight: 'bold' }}>
+          <Typography  fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' align='center' variant="h5" color="white" noWrap sx={{  }}>
             {`${person.nume} ${person.prenume}`}
           </Typography>
-          <Typography align='center' variant="body2" color="rgba(255,255,255,0.7)">
+          <Typography  fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' align='center' variant="body1" color="rgba(255,255,255,0.7)">
             Consultant Financiar
           </Typography>
         </Box>

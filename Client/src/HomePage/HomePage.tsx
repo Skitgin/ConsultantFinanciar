@@ -26,10 +26,11 @@ export default function HomePage() {
       container
       maxWidth='xl'
       sx={{
+        px:1,
         mx: 'auto',
         justifyContent: "center",
         alignContent: "center",
-        bgcolor: "#e5eaf5",
+        bgcolor: "#F7F7FF",
         userSelect: "none",  
         display: 'flex',
         flexDirection: 'column',
@@ -60,7 +61,7 @@ export default function HomePage() {
         alignContent: "center",
         my: 2 
       }}>
-        <Typography variant="h6">Parteneri</Typography>
+        <Typography fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant="h5">Parteneri</Typography>
       </Box>
 
      

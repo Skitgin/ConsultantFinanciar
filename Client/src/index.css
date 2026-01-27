@@ -6,3 +6,10 @@ body {
   background-color: #e5eaf5;
   margin: 0;
 }
+
+h3 {
+  /* clamp(minimum, preferred, maximum) */
+  font-size: clamp(2rem, 8vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}

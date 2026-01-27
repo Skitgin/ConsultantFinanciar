@@ -11,11 +11,11 @@ const midLinks = [
 ];
 
 const navStyles = {
-  color: '#ffffff',
+  color: '#006ad4',
   typography: 'h6',
   textDecoration: 'none',
-  '&:hover': { color: '#FFBf65' },
-  '&.active': { color: '#f8a100' },
+  '&:hover': { color: '#004eb3' },
+  '&.active': { color: '#00a799' },
 };
 
 export default function NavBar() {
@@ -43,7 +43,7 @@ export default function NavBar() {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: "#003a6c" }}>
+      <AppBar position="sticky" elevation={4} sx={{ bgcolor: "#F7F7FF"}}>
         <Toolbar sx={{ display: 'flex', justifyContent: "space-between", width: '100%' }}>
 
           {/* 1. LEFT SECTION (Logo) */}
@@ -53,7 +53,7 @@ export default function NavBar() {
               component={Link}
               to="/"
             >
-              <img src={'/LogoWhite.webp'} style={{ width: 65, height: 65 }} alt="Logo" />
+              <img src={'/blueLogo.webp'} style={{ width: 65, height: 65 }} alt="Logo" />
             </Button>
           </Box>
 

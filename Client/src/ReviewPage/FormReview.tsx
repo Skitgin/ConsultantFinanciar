@@ -111,9 +111,10 @@ return (
   >
     <Grid size={12}> 
       <Typography 
+       fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
         variant="h3" 
         textAlign="center"
-        sx={{ my: 2, fontWeight: 100, color: '#494D5F', fontSize: { xs: '2rem', md: '3rem' } }}
+        sx={{ my: 2, fontWeight: 100, color: '#000', fontSize: { xs: '2rem', md: '3rem' } ,letterSpacing:-0.4}}
       >
         Opinia ta contează pentru noi!
       </Typography>
@@ -136,8 +137,8 @@ return (
         alignItems: 'center', 
         justifyContent: 'center',
       }}>
-        <Typography align="center" variant='h5' sx={{ mt: 2,mb: 3, color: "#fff", textAlign: 'center' }}>
-          Alege Consultantul Tau
+        <Typography   fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' align="center" variant='h5' sx={{ mt: 2,mb: 3, color: "#fff", textAlign: 'center',letterSpacing:-0.3 }}>
+          Alege Consultantul Tău
         </Typography>
         
         {/* Full width container for the roaster */}
@@ -153,6 +154,7 @@ return (
         component="form" 
         onSubmit={handleSubmit} 
         sx={{ 
+          bgcolor:"#e5eaf5",
           height: '100%', 
           p: { xs: 2, sm: 4 }, 
           borderRadius: 3, 
@@ -171,7 +173,7 @@ return (
             label="Nume"
             value={form.nume}
             onChange={handleChange}
-            sx={{ bgcolor: "white", borderRadius: 1 }}
+            sx={{ bgcolor: "white", borderRadius: 1 ,"& .MuiInputBase-input": { fontFamily:'Verdana, Geneva, sans-serif' , color:"#000",fontSize:16},"& .MuiInputLabel-root": {fontFamily: 'Garamond, serif',},}}
           />
           <TextField
             required
@@ -180,7 +182,7 @@ return (
             name="prenume"
             value={form.prenume}
             onChange={handleChange}
-            sx={{ bgcolor: "white", borderRadius: 1 }}
+            sx={{ bgcolor: "white", borderRadius: 1 ,"& .MuiInputBase-input": { fontFamily:'Verdana, Geneva, sans-serif' , color:"#000" },"& .MuiInputLabel-root": {fontFamily: 'Garamond, serif',}}}
           />
         </Box>
 
@@ -192,11 +194,11 @@ return (
           multiline
           rows={5}
           onChange={handleChange}
-          sx={{ bgcolor: "white", width: "100%", borderRadius: 1 }}
+          sx={{ bgcolor: "white", width: "100%", borderRadius: 1 ,"& .MuiInputBase-input": { fontFamily: 'Palatino Linotype, serif', fontWeight:500,color:"#000" },"& .MuiInputLabel-root": { fontFamily: 'Palatino Linotype, serif',} }}
         />
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant='h5' sx={{ mb: 1 }}>Rating</Typography>
+          <Typography fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant='h5' sx={{ mb: 1 ,color:"#000"}}>Rating</Typography>
           <Rating
             sx={{ color: "#ffa600" }}
             name="scor"
@@ -215,7 +217,7 @@ return (
           type="submit" 
           variant="contained" 
           size="large" 
-          sx={{ bgcolor: "#0061b6", height: 50, width: 200, mt: 1 }}
+          sx={{  height: 50, width: 200, mt: 1 }}
         >
           Publica Recenzia
         </Button>

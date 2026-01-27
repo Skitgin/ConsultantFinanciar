@@ -13,7 +13,7 @@ return (
    sx={{
     boxShadow: 3,
     bgcolor: "#ffffff",
-    borderRadius: 2,
+    borderRadius: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -30,12 +30,14 @@ return (
     flex: "1 1 300px",      // Grow and shrink uniformly
     }}
   >
-    {/* Header Section (Replaces CardMedia) */}
-    <Box sx={{ bgcolor: "#003a6c", pb: 1 }}>
+    {/*#003a6c */}
+    <Box sx={{ bgcolor: "#1976d2", pb: 1 ,boxShadow:2, }}>
       <Typography
+       fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
         align="center"
         color="#ffffff"
         sx={{ 
+         
           mt: 3, 
           display: "flex", 
           justifyContent: "center", 
@@ -51,10 +53,12 @@ return (
     <Box sx={{ flexGrow: 1, px: 2, py: 1 }}>
       <Box sx={{ bgcolor: "#ffffff", height: "100%", borderRadius: 3 }}>
         <Typography
+          fontFamily ='"Palatino Linotype", "Book Antiqua", Palatino, serif'
           variant="body1"
           sx={{
+            color:"#000",
+         
             p: 1, 
-            color: "#494D5F",
             lineHeight: 1.5,
             maxHeight: '140px', // Adjusted to fit the 250px total height
             overflowY: 'auto', 
@@ -76,7 +80,7 @@ return (
 
     {/* Footer Section (Replaces CardActions) */}
     <Box sx={{flexShrink:1}}>
-      <Divider sx={{ width: '100%' }} />
+      <Divider sx={{ width: '100%', boxShadow:2, }} />
       <Box 
         sx={{ 
           display: "flex", 
