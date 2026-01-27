@@ -2,6 +2,6 @@
   "name": "client",
   "compatibility_date": "2026-01-27",
   "assets": {
-    "directory": "./client/dist" // Tell it to look inside the client folder
+    "directory": "./client/dist" 
   }
 }
