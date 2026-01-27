@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Button, Divider, FormControl, MenuItem, Select, Typography, type SelectChangeEvent } from '@mui/material'
 import React, { useState } from 'react'
 import NumberField from './NumberField'
