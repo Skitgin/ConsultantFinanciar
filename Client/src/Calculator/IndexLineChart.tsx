@@ -15,7 +15,7 @@ export default function IndexLineChart({ data }: Prop) {
       <CartesianGrid stroke="#000" strokeDasharray="7 7" />
       <XAxis dataKey="name" />
       <YAxis width="auto" dataKey="return" interval={0} />
-      <Tooltip itemSorter={(item) => item.value * -1} />
+      <Tooltip itemSorter={(item) => (item.value as number) * -1} />
       <Line type="monotone" dataKey="investitie" stroke="#0400ff" strokeWidth={2} />
       <Line type="monotone" dataKey="return" stroke="#ff0000" strokeWidth={2} />
     </LineChart>
