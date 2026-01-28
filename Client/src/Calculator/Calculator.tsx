@@ -159,7 +159,7 @@ export default function Calculator() {
                         <NumberField label="" min={0} value={plataLunara} onValueChange={(value) => { SetPlataLunara(value); SetSumaInitiala(null) }} />
                     </Box>
                     <Box sx={{ display: "flex", flexDirection: "column" }}>
-                        <Typography color='white' align='center'sx={{ maxWidth: { xs: '120px', sm: 'none' }}}>Sold Inițial</Typography>
+                        <Typography color='white' align='center'sx={{  display: "block",maxWidth: { xs: '50px', sm: 'none' }, margin: '0 auto'}}>Sold Inițial</Typography>
                         <NumberField label="" min={0} value={sumaInitiala} onValueChange={(value) => { SetSumaInitiala(value); SetPlataLunara(null) }} />
                     </Box>
 
@@ -189,7 +189,7 @@ export default function Calculator() {
                         </FormControl>
 
                     </Box>
-                    <Button variant='contained' size="large" sx={{height:50, maxHeight: 100, mt: 3.5, width: "100%", }} onClick={() => { SetDataPoints([]); Calculeaza(r, plataLunara, sumaInitiala, perioadaDeCapitalizare, perioadaDeEconomisire) }}>Calculeaza</Button>
+                    <Button variant='contained' size="large" sx={{height:{ xs:100, sm: 50 } ,maxHeight: 100, mt: 3.5, width: "100%", }} onClick={() => { SetDataPoints([]); Calculeaza(r, plataLunara, sumaInitiala, perioadaDeCapitalizare, perioadaDeEconomisire) }}>Calculeaza</Button>
                 </Box>
             </Box>
 
