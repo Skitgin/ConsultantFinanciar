@@ -1,0 +1,3 @@
+[assets]
+directory = "./Client/dist" # or your build folder
+not_found_handling = "single-page-application"
