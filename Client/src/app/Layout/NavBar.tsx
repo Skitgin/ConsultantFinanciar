@@ -27,12 +27,12 @@ export default function NavBar() {
 
 
   const drawerContent = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: 250, height: "100%", bgcolor: "#494D5F" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: 250, height: "100%", bgcolor: "#e5eaf5" }}>
       <List >
         {midLinks.map(({ title, path }) => (
           <ListItem key={path} disablePadding>
-            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor: "#003a6c", borderRadius: 3, mt: 1, ml: 1, mr: 1, }}>
-              <ListItemText sx={{ color: "#ffff" }} primary={title.toUpperCase()} />
+            <ListItemButton component={NavLink} to={path} sx={{ textAlign: 'center', bgcolor: "#F7F7FF", borderRadius: 3, mt: 1, ml: 1, mr: 1, }}>
+              <ListItemText sx={{ color: "#004eb3" }} primary={title.toUpperCase()} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -83,7 +83,7 @@ export default function NavBar() {
               onClick={handleDrawerToggle}
               sx={{ display: { md: 'none' } }}
             >
-              <MenuIcon fontSize="large" />
+              <MenuIcon sx={{ color: '#004eb3' }}fontSize="large" />
             </IconButton>
 
             {/* Pro Tip: If you have no buttons on the right for desktop, 
@@ -96,11 +96,12 @@ export default function NavBar() {
 
       {/* MOBILE DRAWER COMPONENT */}
       <Drawer
+        color='#004eb3'
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }} // Better open performance on mobile
-        sx={{
+        sx={{        
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
         }}

@@ -96,7 +96,6 @@ export default function ConsultantCardMobile({ consultant, onSwipeLeft, onSwipeR
             href={consultant.link}
             variant="contained"
             sx={{
-              bgcolor: "#003a6c",
               color: "#ffff",
               px: 4,
               py: 1.5,
