@@ -4,14 +4,14 @@ using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 public class NewsFetchWorker : BackgroundService
-{   
+{
     private readonly IConfiguration _config;
     private readonly IServiceProvider _services;
     private readonly ILogger<NewsFetchWorker> _logger;
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public NewsFetchWorker(IConfiguration config,IServiceProvider services, ILogger<NewsFetchWorker> logger, IHttpClientFactory httpClientFactory)
-    {   
+    public NewsFetchWorker(IConfiguration config, IServiceProvider services, ILogger<NewsFetchWorker> logger, IHttpClientFactory httpClientFactory)
+    {
         _config = config;
         _services = services;
         _logger = logger;
@@ -40,20 +40,23 @@ public class NewsFetchWorker : BackgroundService
 
     private async Task FetchAndStoreNews()
     {
-        string apiKey = _config["NewsApiKey"]?? string.Empty;
-        
+        string apiKey = _config["NewsApiKey"] ?? string.Empty;
+
         string url = $"https://newsdata.io/api/1/latest?apikey={apiKey}&country=ro&image=1&domainurl=www.zf.ro";
 
         using var scope = _services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<ReviewContext>(); 
+        var dbContext = scope.ServiceProvider.GetRequiredService<ReviewContext>();
         var client = _httpClientFactory.CreateClient();
 
-        await dbContext.News.ExecuteDeleteAsync();
+
 
         var response = await client.GetFromJsonAsync<JsonElement>(url);
 
-        if (response.TryGetProperty("results", out var resultsElements))
+        if (response.TryGetProperty("results", out var resultsElements)&& resultsElements.GetArrayLength() > 0)
         {
+
+            await dbContext.News.ExecuteDeleteAsync();
+
             foreach (var item in resultsElements.EnumerateArray())
             {
                 var newsId = item.GetProperty("article_id").GetString();
