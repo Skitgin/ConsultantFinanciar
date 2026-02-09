@@ -11,7 +11,7 @@ namespace API.Entities
         public required string Source { get; set; }
         public required string Title { get; set; }
 
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         public required string ImageUrl { get; set; }
 
