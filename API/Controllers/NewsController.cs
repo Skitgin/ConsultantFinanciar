@@ -12,10 +12,17 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class NewsController : Controller
     {
+        private readonly IConfiguration _config;
+
+        // You MUST add this constructor to "inject" the configuration
+        public NewsController(IConfiguration config)
+        {
+            _config = config;
+        }
         [HttpGet]
         public async Task<IActionResult> GetNews()
         {
-            string apiKey = "pub_9979d3768edc49349a0b23ceb901a10a";
+            string apiKey = _config["NewsApiKey"] ?? string.Empty;
             string url = $"https://newsdata.io/api/1/latest? apikey={apiKey} &country=ro&image=1&domainurl=www.zf.ro";
             using var client = new HttpClient();
             var response = await client.GetFromJsonAsync<dynamic>(url);

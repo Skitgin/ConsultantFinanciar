@@ -24,6 +24,8 @@ public class NewsFetchWorker : BackgroundService
         {
             _logger.LogInformation("News Fetcher running at: {time}", DateTimeOffset.Now);
 
+            await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+
             try
             {
                 await FetchAndStoreNews();
@@ -31,9 +33,11 @@ public class NewsFetchWorker : BackgroundService
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error occurred fetching news.");
+                await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+            continue;
             }
 
-            // Wait for 2 hours
+            
             await Task.Delay(TimeSpan.FromHours(6), stoppingToken);
         }
     }
