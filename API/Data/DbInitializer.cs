@@ -26,33 +26,40 @@ public class DbInitializer
             new Consultant
             {
                 //Id = 1,
-                Nume = "Penghiș",
-                Prenume = "Cosmina",
-                ImageUrl="/Cosmina.webp",
-                Descriere = "Am descoperit lumea finanțelor nu din manuale, ci din realitatea vieții de zi cu zi — atunci când am realizat cât de greu este să trăiești fără o siguranță financiară reală.Am văzut oameni muncitori, inteligenți, care își pierd liniștea nu pentru că nu câștigă suficient, ci pentru că nu știu cum să gestioneze eficient ceea ce au.\n\n Așa a început drumul meu.\n\nDupă ce am absolvit studiile economice și m-am specializat în domeniul financiar, am obținut și acreditarea oficială ISF (Institutul de Studii Financiare), iar de atunci, mi-am propus o misiune clară: să-i ajut pe români să scape de povara unei situații financiare instabile și să își construiască, pas cu pas, un plan care le aduce siguranță, echilibru și libertate.\n\n Cred că educația financiară nu este un lux, ci o nevoie de bază, iar scopul meu este să fac acest proces accesibil, realist și mai ales, potrivit, pentru ca oricine să poată trăi o viață fără stresul banilor și cu mai multă încredere în propriul viitor.",
+                Nume = "Maria",
+                Prenume = "Ionescu",
+                ImageUrl="/Gemini1.webp",
+                Descriere = "Sunt consultant financiar cu peste 12 ani de experiență în planificare financiară personală și optimizare fiscală. Lucrez în special cu antreprenori și profesioniști din domeniul IT, ajutându-i să își structureze veniturile și să își construiască strategii financiare sustenabile pe termen lung. Pun accent pe soluții personalizate, transparență și educație financiară, astfel încât fiecare client să poată lua decizii informate și sigure.\n\n Specializări:\n\nPlanificare financiară personală\nStrategii de investiții\nOptimizare fiscală\nManagementul riscului",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
-                
+                LinkLinkedIn="https://www.linkedin.com/",
+                LinkInstagram="https://www.instagram.com/",
+                LinkFacebook ="https://www.facebook.com/"
             },
              new Consultant
             {
                 //Id = 2,
-                Nume = "Pantea",
-                Prenume = "Cătălin",
-                ImageUrl="/Cata.webp",
-                Descriere = "",
+                Nume = "Anderi",
+                Prenume = "Popescu",
+                ImageUrl="/Gemini2.webp",
+                Descriere = "Sunt consultant financiar cu peste 12 ani de experiență în planificare financiară personală și optimizare fiscală. Lucrez în special cu antreprenori și profesioniști din domeniul IT, ajutându-i să își structureze veniturile și să își construiască strategii financiare sustenabile pe termen lung. Pun accent pe soluții personalizate, transparență și educație financiară, astfel încât fiecare client să poată lua decizii informate și sigure.\n\n Specializări:\n\nPlanificare financiară personală\nStrategii de investiții\nOptimizare fiscală\nManagementul riscului",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
-                LinkLinkedIn="https://www.linkedin.com/in/pantea-catalin-955473174/?originalSubdomain=ro",
+                LinkLinkedIn="https://www.linkedin.com/",
+                LinkInstagram="https://www.instagram.com/",
+                LinkFacebook ="https://www.facebook.com/"
 
             },
               new Consultant
             {
                 //Id = 2,
-                Nume = "Belei",
-                Prenume = "Radu Vlăduț",
-                ImageUrl="",
+                Nume = "Radu",
+                Prenume = "Dumintrescu",
+                ImageUrl="Gemini3.webp",
                 Descriere = "",
-                Link="https://calendar.google.com/calendar/u/0/r/eventedit?text=Consultan%C8%9B%C4%83+Financiar%C4%83&dates=20240405T100000Z/20240405T110000Z&details=Discut%C4%83m+despre+siguran%C8%9Ba+ta+financiar%C4%83!&location=Online&sf=true&output=xml",
-                LinkInstagram="https://www.instagram.com/belei_vladut/",
+                Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
+                LinkInstagram="https://www.instagram.com/",
+                LinkFacebook ="https://www.facebook.com/",
+                LinkLinkedIn="https://www.linkedin.com/",
+
             }
         };
         context.Consultants.AddRange(consultants);
@@ -68,9 +75,9 @@ public class DbInitializer
             new Review
             {
                 //Id = 1,
-                Nume = "Xulan",
-                Prenume = "Xulescu",
-                Consultant="Radu Radulescu ",
+                Nume = "Ruslan",
+                Prenume = "Ruslescu",
+                Consultant="Radu Dumitrescu ",
                 Descriere = "Am avut o experiență foarte bună cu consilierul economic. Mi-a explicat clar toate opțiunile și m-a ajutat să iau decizii financiare mai sigure. Profesionalism și răbdare pe tot parcursul colaborării.",
                 Scor =5
             },
@@ -79,7 +86,7 @@ public class DbInitializer
                 //Id = 1,
                 Nume = "Marian",
                 Prenume = "Marinescu",
-                Consultant="Ene Enescu",
+                Consultant="Maria Ionescu",
                 Descriere = "Consilierul economic a fost extrem de bine pregătit și atent la nevoile mele. Am primit soluții personalizate și ușor de aplicat. Recomand cu încredere pentru oricine vrea mai mult control asupra finanțelor",
                 Scor =5
 
@@ -89,7 +96,7 @@ public class DbInitializer
                 //Id = 1,
                 Nume = "Andreea",
                 Prenume = "Andreescu",
-                Consultant="Viorica Viorescu",
+                Consultant="Andrei Popescu",
                 Descriere = "O colaborare excelentă! Am apreciat modul structurat de lucru și explicațiile pe înțelesul meu. M-am simțit susținută și informată la fiecare pas.",
                 Scor=5
 
