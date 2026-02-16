@@ -46,18 +46,18 @@ export default function NavBar() {
       <AppBar position="sticky" elevation={4} sx={{ bgcolor: "#F7F7FF"}}>
         <Toolbar sx={{ display: 'flex', justifyContent: "space-between", width: '100%' }}>
 
-          {/* 1. LEFT SECTION (Logo) */}
+          
           <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-start" }}>
             <Button
               sx={{ borderRadius: 50 }}
               component={Link}
               to="/"
             >
-              <img src={'/blueLogo.webp'} style={{ width: 65, height: 65 }} alt="Logo" />
+              <img src={'/Gemini4.webp'} style={{ width: 65, height: 65 }} alt="Logo" />
             </Button>
           </Box>
 
-          {/* 2. CENTER SECTION (Desktop Links) */}
+          
           <Box sx={{
             display: { xs: 'none', md: 'flex' },
             flex: 1,
@@ -74,7 +74,7 @@ export default function NavBar() {
             </List>
           </Box>
 
-          {/* 3. RIGHT SECTION (Mobile Icon or Placeholder) */}
+         
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <IconButton
               color="inherit"
@@ -86,21 +86,18 @@ export default function NavBar() {
               <MenuIcon sx={{ color: '#004eb3' }}fontSize="large" />
             </IconButton>
 
-            {/* Pro Tip: If you have no buttons on the right for desktop, 
-         this empty Box still needs 'flex: 1' to keep the links centered.
-      */}
           </Box>
 
         </Toolbar>
+
       </AppBar>
 
-      {/* MOBILE DRAWER COMPONENT */}
       <Drawer
         color='#004eb3'
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
-        ModalProps={{ keepMounted: true }} // Better open performance on mobile
+        ModalProps={{ keepMounted: true }} 
         sx={{        
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 250 },
