@@ -15,7 +15,7 @@ namespace API.Controllers
     public class ConsultantsController(ReviewContext context) : Controller
     {
         [HttpGet]
-        public async Task<ActionResult<List<Consultant>>> GetReviews()
+        public async Task<ActionResult<List<Consultant>>> GetConsultants()
         {
             return await context.Consultants.ToListAsync();
         }
