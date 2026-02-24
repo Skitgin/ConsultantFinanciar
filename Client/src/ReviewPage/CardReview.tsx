@@ -33,7 +33,7 @@ return (
     {/*#003a6c */}
     <Box sx={{ bgcolor: "#1976d2", pb: 1 ,boxShadow:2, }}>
       <Typography
-       fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
+       fontFamily= '"Gill Sans", "Gill Sans MT",'
         align="center"
         color="#ffffff"
         sx={{ 
@@ -53,7 +53,7 @@ return (
     <Box sx={{ flexGrow: 1, px: 2, py: 1 }}>
       <Box sx={{ bgcolor: "#ffffff", height: "100%", borderRadius: 3 }}>
         <Typography
-          fontFamily ='"Palatino Linotype", "Book Antiqua", Palatino, serif'
+          fontFamily ='"Palatino Linotype",serif'
           variant="body1"
           sx={{
             color:"#000",

@@ -198,7 +198,7 @@ return (
         />
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant='h5' sx={{ mb: 1 ,color:"#000"}}>Rating</Typography>
+          <Typography fontFamily= '"Gill Sans", "Gill Sans MT"' variant='h5' sx={{ mb: 1 ,color:"#000"}}>Rating</Typography>
           <Rating
             sx={{ color: "#ffa600" }}
             name="scor"

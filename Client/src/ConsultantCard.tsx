@@ -27,10 +27,10 @@ export default function ConsultantCard({ consultant }: Props) {
           </Avatar>
 
             <Box sx={{ display: "flex", flexDirection: "column", px: 4, mt: 2 }}>
-              <Typography fontFamily='"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant="h5" color='White' align='center' sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+              <Typography fontFamily='"Gill Sans", "Gill Sans MT"' variant="h5" color='White' align='center' sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                 {consultant.nume + " " + consultant.prenume}
               </Typography>
-              <Typography fontFamily='"Gill Sans", "Gill Sans MT", Calibri, sans-serif' variant="body1" color='White' align='center' sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+              <Typography fontFamily='"Gill Sans", "Gill Sans MT"' variant="body1" color='White' align='center' sx={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                 Consultant Financiar
               </Typography>
               <Divider sx={{ bgcolor: "#f8a100" }}></Divider>

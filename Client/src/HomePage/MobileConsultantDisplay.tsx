@@ -83,7 +83,6 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Pagination dots */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, gap: 1.5 }}>
         {consultants.map((_, i) => (
           <Box
