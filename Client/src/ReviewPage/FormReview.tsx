@@ -111,7 +111,6 @@ return (
   >
     <Grid size={12}> 
       <Typography 
-       fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif'
         variant="h3" 
         textAlign="center"
         sx={{ my: 2, fontWeight: 100, color: '#000', fontSize: { xs: '2rem', md: '3rem' } ,letterSpacing:-0.4}}
@@ -137,7 +136,7 @@ return (
         alignItems: 'center', 
         justifyContent: 'center',
       }}>
-        <Typography   fontFamily= '"Gill Sans", "Gill Sans MT", Calibri, sans-serif' align="center" variant='h5' sx={{ mt: 2,mb: 3, color: "#fff", textAlign: 'center',letterSpacing:-0.3 }}>
+        <Typography  align="center" variant='h5' sx={{ mt: 2,mb: 3, color: "#fff", textAlign: 'center',letterSpacing:-0.3 }}>
           Alege Consultantul Tău
         </Typography>
         
