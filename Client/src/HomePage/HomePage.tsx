@@ -64,7 +64,7 @@ export default function HomePage() {
         alignContent: "center",
         my: 2
       }}>
-        <Typography fontFamily='"Gill Sans", "Gill Sans MT"' variant="h5">Parteneri</Typography>
+        <Typography variant="h5">Parteneri</Typography>
       </Box>
 
 
