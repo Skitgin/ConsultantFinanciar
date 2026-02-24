@@ -24,7 +24,7 @@ export default function Catalog({ reviews }: Props) {
       py: 5 
     }}
   >
-    <Typography  fontFamily= '"Gill Sans", "Gill Sans MT"' variant="h3" color="#000" fontWeight="light" align="center" sx={{fontSize: { xs: '2rem', md: '3rem' },letterSpacing:-0.4,mb:2}}>
+    <Typography variant="h3" color="#000" fontWeight="light" align="center" sx={{fontSize: { xs: '2rem', md: '3rem' },letterSpacing:-0.4,mb:2}}>
       Vezi ce spune lumea despe noi
     </Typography>
 

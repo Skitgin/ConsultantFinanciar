@@ -33,7 +33,6 @@ return (
     {/*#003a6c */}
     <Box sx={{ bgcolor: "#1976d2", pb: 1 ,boxShadow:2, }}>
       <Typography
-       fontFamily= '"Gill Sans", "Gill Sans MT",'
         align="center"
         color="#ffffff"
         sx={{ 

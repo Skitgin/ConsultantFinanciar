@@ -112,10 +112,10 @@ export const ConsultantRoaster = ({ setName, consultants }: SetNameProps): React
       <Box sx={{ mt: 2, mb: 3 }}>
         {consultants.slice(startIndex, startIndex + visibleCount).map((person) => (
           <Box key={`text-${person.id}`}>
-            <Typography fontFamily='"Gill Sans", "Gill Sans MT"' align='center' variant="h5" color="white" noWrap sx={{}}>
+            <Typography align='center' variant="h5" color="white" noWrap sx={{}}>
               {`${person.nume} ${person.prenume}`}
             </Typography>
-            <Typography fontFamily='"Gill Sans", "Gill Sans MT"' align='center' variant="body1" color="rgba(255,255,255,0.7)">
+            <Typography  align='center' variant="body1" color="rgba(255,255,255,0.7)">
               Consultant Financiar
             </Typography>
           </Box>
