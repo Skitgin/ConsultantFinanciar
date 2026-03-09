@@ -33,8 +33,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-builder.Logging.AddConsole(); // This is what the Log Stream "listens" to
-builder.Logging.AddDebug();
+builder.Logging.AddConsole(); 
 
 app.UseHttpsRedirection();
 //remove Cors logic before production 
