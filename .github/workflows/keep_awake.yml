@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Ping Health Endpoint
         run: |
-          curl -s -o /dev/null -w "%{http_code}" https://consultantifinanciari.azurewebsites.net/health
+          curl -s -o /dev/null -w "%{http_code}" consultanti-h6chdwgdh4e8fxdz.canadacentral-01.azurewebsites.net/health
