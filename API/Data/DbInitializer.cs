@@ -53,7 +53,7 @@ public class DbInitializer
                 //Id = 2,
                 Nume = "Radu",
                 Prenume = "Dumintrescu",
-                ImageUrl="Gemini3.webp",
+                ImageUrl="/Gemini3.webp",
                 Descriere = "Sunt consultant financiar cu peste 12 ani de experiență în planificare financiară personală și optimizare fiscală. Lucrez în special cu antreprenori și profesioniști din domeniul IT, ajutându-i să își structureze veniturile și să își construiască strategii financiare sustenabile pe termen lung. Pun accent pe soluții personalizate, transparență și educație financiară, astfel încât fiecare client să poată lua decizii informate și sigure.\n\n Specializări:\n\nPlanificare financiară personală\nStrategii de investiții\nOptimizare fiscală\nManagementul riscului",
                 Link="https://docs.google.com/forms/d/e/1FAIpQLSeXWPCBCCVcYguoQ1AOs6yRfAD2mhbI1L3jJtY1NksOoYYm1w/viewform?usp=header",
                 LinkInstagram="https://www.instagram.com/",

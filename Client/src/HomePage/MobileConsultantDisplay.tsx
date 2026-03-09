@@ -19,7 +19,7 @@ export const MobileConsultantDisplay = ({ consultants }: Props) => {
   const handleNext = () => setStartIndex((prev) => (prev + 1) % totalItems);
   const handlePrev = () => setStartIndex((prev) => (prev - 1 + totalItems) % totalItems);
 
-  // Auto-play: Only runs if NOT expanded
+  
   useEffect(() => {
     if (isExpanded) return;
     const interval = setInterval(handleNext, 2000);
